@@ -1,5 +1,5 @@
 Compiling Program: C:\DataFlex Projects\FutbolWebApp\AppSrc\WebApp.src
-Memory Available: 42472419328
+Memory Available: 43775754240
 1>Use AllWebAppClasses.pkg
 Using pre-compiled package ALLWEBAPPCLASSES.PKG
 Including file: AllWebAppClasses.x64.pkd    (C:\Program Files\DataFlex 25.0\Pkg\AllWebAppClasses.x64.pkd)
@@ -159,7 +159,7 @@ Including file: LoginEncryptionKey.inc    (C:\DataFlex Projects\FutbolWebApp\App
 36398>                Set piMenuHeight to 500
 36399>
 36399>                Object oDashboard_itm is a cWebMenuItem
-36401>                    Set psCaption to C_$Dashboard
+36401>                    Set psCaption to "Inicio"
 36402>                    
 36402>                    WebRegisterPath ntNavigateBegin oDashboard
 36408>
@@ -1465,7 +1465,7 @@ Including file: Dashboard.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Dashbo
 37353>>>
 37353>>>    Set piMaxWidth to 1024
 37354>>>    
-37354>>>    Set psCaption to "Dashboard"
+37354>>>    Set psCaption to "Inicio"
 37355>>>    Set peViewType to vtUndefined
 37356>>>    Set pbShowCaption to False
 37357>>>    Set psCSSClass to "Dashboard"
@@ -3864,7 +3864,7 @@ Including file: SelectEntrenador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc
 39417>Send StartWebApp of oWebApp
 39418>
 Summary
-Memory Available: 42466566144
+Memory Available: 43769401344
 Total Warnings : 0
 Total Errors   : 0
 Total Symbols  : 25650
@@ -3872,6 +3872,6 @@ Total Resources: 0
 Total Commands : 39417
 Total Windows  : 0
 Total Pages    : 0
-Static Data    : 487029
+Static Data    : 487013
 Message area   : 266602
 Total Blocks   : 17458
