@@ -1,82 +1,32 @@
-.ZoomLiga .WebForm .WebFrm_Wrapper {
-    border: 2px solid #f0c040 !important;
-    border-radius: 6px !important;
-}
+/* Zoom CSS - Todos los Zoom */
 
-.ZoomLiga .WebForm input,
-.ZoomLiga .WebForm .WebDynFrm {
-    color: #ffffff !important;
-    text-align: left !important;
-}
-
-.ZoomLiga .WebControl > div > label {
-    color: #ffffff !important;
-}
-
-/* ZoomEquipo CSS */
-
-.ZoomEquipo .WebForm .WebFrm_Wrapper {
-    border: 2px solid #f0c040 !important;
-    border-radius: 6px !important;
-}
-
-.ZoomEquipo .WebForm input,
-.ZoomEquipo .WebForm .WebDynFrm {
-    color: #ffffff !important;
-    text-align: left !important;
-}
-
-.ZoomEquipo .WebControl > div > label {
-    color: #ffffff !important;
-}
-
-/* ZoomJugador CSS */
-
-.ZoomJugador .WebForm .WebFrm_Wrapper {
-    border: 2px solid #f0c040 !important;
-    border-radius: 6px !important;
-}
-
-.ZoomJugador .WebForm input,
-.ZoomJugador .WebForm .WebDynFrm {
-    color: #ffffff !important;
-    text-align: left !important;
-}
-
-.ZoomJugador .WebControl > div > label {
-    color: #ffffff !important;
-}
-
-/* ZoomEntrenador CSS */
-
-.ZoomEntrenador .WebForm .WebFrm_Wrapper {
-    border: 2px solid #f0c040 !important;
-    border-radius: 6px !important;
-}
-
-.ZoomEntrenador .WebForm input,
-.ZoomEntrenador .WebForm .WebDynFrm {
-    color: #ffffff !important;
-    text-align: left !important;
-}
-
-.ZoomEntrenador .WebControl > div > label {
-    color: #ffffff !important;
-}
-
-/* ZoomPosicion CSS */
-
+.ZoomLiga .WebForm .WebFrm_Wrapper,
+.ZoomEquipo .WebForm .WebFrm_Wrapper,
+.ZoomJugador .WebForm .WebFrm_Wrapper,
+.ZoomEntrenador .WebForm .WebFrm_Wrapper,
 .ZoomPosicion .WebForm .WebFrm_Wrapper {
     border: 2px solid #f0c040 !important;
     border-radius: 6px !important;
 }
 
+.ZoomLiga .WebForm input,
+.ZoomLiga .WebForm .WebDynFrm,
+.ZoomEquipo .WebForm input,
+.ZoomEquipo .WebForm .WebDynFrm,
+.ZoomJugador .WebForm input,
+.ZoomJugador .WebForm .WebDynFrm,
+.ZoomEntrenador .WebForm input,
+.ZoomEntrenador .WebForm .WebDynFrm,
 .ZoomPosicion .WebForm input,
 .ZoomPosicion .WebForm .WebDynFrm {
     color: #ffffff !important;
     text-align: left !important;
 }
 
+.ZoomLiga .WebControl > div > label,
+.ZoomEquipo .WebControl > div > label,
+.ZoomJugador .WebControl > div > label,
+.ZoomEntrenador .WebControl > div > label,
 .ZoomPosicion .WebControl > div > label {
     color: #ffffff !important;
 }
