@@ -1,5 +1,5 @@
 .ZoomLiga .WebForm .WebFrm_Wrapper {
-    border: 2px solid #2d8a42 !important;
+    border: 2px solid #f0c040 !important;
     border-radius: 6px !important;
 }
 
@@ -16,7 +16,7 @@
 /* ZoomEquipo CSS */
 
 .ZoomEquipo .WebForm .WebFrm_Wrapper {
-    border: 2px solid #2d8a42 !important;
+    border: 2px solid #f0c040 !important;
     border-radius: 6px !important;
 }
 
@@ -27,5 +27,56 @@
 }
 
 .ZoomEquipo .WebControl > div > label {
+    color: #ffffff !important;
+}
+
+/* ZoomJugador CSS */
+
+.ZoomJugador .WebForm .WebFrm_Wrapper {
+    border: 2px solid #f0c040 !important;
+    border-radius: 6px !important;
+}
+
+.ZoomJugador .WebForm input,
+.ZoomJugador .WebForm .WebDynFrm {
+    color: #ffffff !important;
+    text-align: left !important;
+}
+
+.ZoomJugador .WebControl > div > label {
+    color: #ffffff !important;
+}
+
+/* ZoomEntrenador CSS */
+
+.ZoomEntrenador .WebForm .WebFrm_Wrapper {
+    border: 2px solid #f0c040 !important;
+    border-radius: 6px !important;
+}
+
+.ZoomEntrenador .WebForm input,
+.ZoomEntrenador .WebForm .WebDynFrm {
+    color: #ffffff !important;
+    text-align: left !important;
+}
+
+.ZoomEntrenador .WebControl > div > label {
+    color: #ffffff !important;
+}
+
+/* ZoomPosicion CSS */
+
+.ZoomPosicion .WebForm .WebFrm_Wrapper {
+    border: 2px solid #f0c040 !important;
+    border-radius: 6px !important;
+}
+
+.ZoomPosicion .WebForm input,
+.ZoomPosicion .WebForm .WebDynFrm {
+    color: #ffffff !important;
+    text-align: left !important;
+}
+
+.ZoomPosicion .WebControl > div > label {
     color: #ffffff !important;
 }
