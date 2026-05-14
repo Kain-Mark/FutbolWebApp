@@ -140,6 +140,12 @@ Object oDashboard is a cWebView
 
             End_Object
             
+            Object oImageTile is a cWebHtmlBox
+                Set piColumnSpan to 24
+                Set psCSSClass to "Tile CampoTile"
+                Set psHtml to '<div class="WebCon_Sizer"><img src="CssThemes/verde/campo.png" style="width:100%; display:block; border-radius:8px;"></div>'
+            End_Object
+            
         End_Object
     
     End_Object
