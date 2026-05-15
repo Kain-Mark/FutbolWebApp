@@ -1908,7 +1908,7 @@ li.WebMenuItem.Web_Disabled>div {
     margin: 0;
     padding: 0;
     /*height: 42px;*/
-    color: var(--df-Grayscale8);
+  color: #ffffff;
 }
 
 /* Styles for running the toolbar as standalone */
@@ -1919,7 +1919,8 @@ li.WebMenuItem.Web_Disabled>div {
 }
 
 .WebToolBar.WebTlb_Standalone ul.WebBarRoot>li {
-    color: var(--df-Grayscale8);
+    color: #ffffff;
+
     padding: 7px 0px 0px 0px;
 }
 
@@ -4642,7 +4643,7 @@ width: 21px;*/
 /* Action toolbar in the header */
 
 .HeaderPanel.WebPanel .WebActionBar.WebToolBar span.WebItm_Icon:before {
-    color: var(--df-MainDark);
+    color: #ffffff !important;
 }
 
 .HeaderPanel.WebPanel .WebActionBar.WebToolbar ul.WebBarRoot li.WebMenuItem {
@@ -4672,6 +4673,7 @@ width: 21px;*/
 .HeaderPanel.WebPanel .WebActionBar .WebMenuItem>div>span.WebItm_Icon:before {
     /* Actionbar Icons */
     padding: 11px 0 0 0px;
+    color: #ffffff !important;
 }
 
 .HeaderPanel.WebPanel .WebActionBar .WebMenuItem.WebSaveMenuItem>div>span.WebItm_Icon:before {
@@ -5364,4 +5366,9 @@ button.WebDeleteMenuItem {
 /* Login */
 .LoginBackground.WebApp {
     background: linear-gradient(160deg, #1a5c2a 0%, #0d3b18 100%) !important;
+}
+
+/* Action bar icons - color blanco */
+.WebActionBar.WebToolBar {
+    color: #ffffff !important;
 }

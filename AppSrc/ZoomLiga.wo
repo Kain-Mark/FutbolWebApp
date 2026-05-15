@@ -7,6 +7,7 @@ Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
 Use cligaDataDictionary.dd
+Use SelectEquipo.wo
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
@@ -23,51 +24,52 @@ Object oZoomLiga is a cWebView
 
     Set Main_DD to oliga_DD
     Set Server  to oliga_DD
-Object oWebMainPanel is a cWebPanel
-    Set piColumnCount to 12
-    WebSetResponsive piColumnCount rmMobile to 4
 
-    Object oligaID is a cWebForm
-        Entry_Item liga.ID
-        Set piColumnSpan to 2
-        Set piColumnIndex to 0
-        Set peLabelPosition to lpTop
-        Set psLabel to "ID"
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 4
+
+        Object oligaID is a cWebForm
+            Entry_Item liga.ID
+            Set piColumnSpan to 2
+            Set piColumnIndex to 0
+            Set peLabelPosition to lpTop
+            Set psLabel to "ID"
+        End_Object
+
+        Object oligaNombre is a cWebForm
+            Entry_Item liga.Nombre
+            Set piColumnSpan to 6
+            Set piColumnIndex to 2
+            Set peLabelPosition to lpTop
+            Set psLabel to "Nombre"
+        End_Object
+
+        Object oligaPais is a cWebForm
+            Entry_Item liga.Pais
+            Set piColumnSpan to 4
+            Set piColumnIndex to 8
+            Set peLabelPosition to lpTop
+            Set psLabel to "País"
+        End_Object
+
+        Object oligaEquipos is a cWebForm
+            Entry_Item liga.Equipos
+            Set piColumnSpan to 2
+            Set piColumnIndex to 0
+            Set peLabelPosition to lpTop
+            Set psLabel to "Equipos"
+        End_Object
+
+        Object oligaEquiposMax is a cWebForm
+            Entry_Item liga.EquiposMax
+            Set piColumnSpan to 2
+            Set piColumnIndex to 2
+            Set peLabelPosition to lpTop
+            Set psLabel to "Máx. equipos"
+        End_Object
+
     End_Object
-
-    Object oligaNombre is a cWebForm
-        Entry_Item liga.Nombre
-        Set piColumnSpan to 6
-        Set piColumnIndex to 2
-        Set peLabelPosition to lpTop
-        Set psLabel to "Nombre"
-    End_Object
-
-    Object oligaPais is a cWebForm
-        Entry_Item liga.Pais
-        Set piColumnSpan to 4
-        Set piColumnIndex to 8
-        Set peLabelPosition to lpTop
-        Set psLabel to "País"
-    End_Object
-
-    Object oligaEquipos is a cWebForm
-        Entry_Item liga.Equipos
-        Set piColumnSpan to 2
-        Set piColumnIndex to 0
-        Set peLabelPosition to lpTop
-        Set psLabel to "Equipos"
-    End_Object
-
-    Object oligaEquiposMax is a cWebForm
-        Entry_Item liga.EquiposMax
-        Set piColumnSpan to 2
-        Set piColumnIndex to 2
-        Set peLabelPosition to lpTop
-        Set psLabel to "Máx. equipos"
-    End_Object
-
-End_Object
 
     Object oActionGroup is a cWebMenuGroup
 
@@ -104,7 +106,19 @@ End_Object
             Procedure OnClick
                 Send RefreshRecord
             End_Procedure
-        End_Object 
+        End_Object
+
+        Object oEquiposBtn is a cWebMenuItem
+            Set psCSSClass to "WebIcon_ArrowRight"
+            Set psCaption to "Ver Equipos"
+            Set peActionDisplay to adMenu
+
+            WebRegisterPath ntNavigateForwardCustom oSelectEquipo
+
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+        End_Object
 
     End_Object 
 

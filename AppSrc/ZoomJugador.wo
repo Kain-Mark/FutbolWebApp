@@ -8,6 +8,7 @@ Use cWebMenuItem.pkg
 Use cWebForm.pkg
 Use SelectEquipo.wo
 Use SelectLiga.wo
+Use SelectPosicion.wo
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
 Use cjugadorDataDictionary.dd
@@ -40,7 +41,6 @@ Object oZoomJugador is a cWebView
         Set piColumnCount to 12
         WebSetResponsive piColumnCount rmMobile to 4
 
-        // --- Datos del jugador ---
         Object ojugadorID is a cWebForm
             Entry_Item jugador.ID
             Set piColumnSpan to 2
@@ -73,7 +73,6 @@ Object oZoomJugador is a cWebView
             Set psLabel to "Nacionalidad"
         End_Object
 
-        // --- Equipo al que pertenece ---
         Object oequipoID is a cWebForm
             Entry_Item equipo.ID
             Set piColumnSpan to 2
@@ -139,6 +138,16 @@ Object oZoomJugador is a cWebView
             Set peActionDisplay to adMenu
             Procedure OnClick
                 Send RefreshRecord
+            End_Procedure
+        End_Object
+
+        Object oPosicionBtn is a cWebMenuItem
+            Set psCSSClass to "WebIcon_ArrowRight"
+            Set psCaption to "Ver Posición"
+            Set peActionDisplay to adMenu
+            WebRegisterPath ntNavigateForwardCustom oSelectPosicion
+            Procedure OnClick
+                Send NavigatePath
             End_Procedure
         End_Object
 
