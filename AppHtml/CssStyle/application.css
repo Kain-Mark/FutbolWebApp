@@ -19,7 +19,7 @@
 .ZoomEntrenador .WebForm .WebDynFrm,
 .ZoomPosicion .WebForm input,
 .ZoomPosicion .WebForm .WebDynFrm {
-    color: #ffffff !important;
+    color: #1a1a1a !important;
     text-align: left !important;
 }
 
@@ -30,6 +30,7 @@
 .ZoomPosicion .WebControl > div > label {
     color: #ffffff !important;
 }
+
 .Tile.CampoTile .WebCon_Sizer {
     padding: 0 !important;
     overflow: hidden !important;

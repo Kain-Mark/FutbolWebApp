@@ -65,23 +65,26 @@ Object oSelectEntrenador is a cWebView
             Set psCaption to "Equipo"
             Set piWidth to 600
         End_Object
-
-        Object oDetailButton is a cWebColumnButton
-            Set psCaption to "btn"
-            Set piWidth to 45
-            Set pbFixedWidth to True
-            Set pbResizable to False
-            Set piListRowSpan to 1
-            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
-            Set peAlign to alignRight
-            WebRegisterPath ntNavigateForward oZoomEntrenador
-            Procedure OnClick
-                Send NavigatePath
-            End_Procedure
-            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-                Move True to NavigateData.bReadOnly
-            End_Procedure
-        End_Object
+Object oDetailButton is a cWebColumnButton
+    Set psCaption to "btn"
+    Set piWidth to 45
+    Set pbFixedWidth to True
+    Set pbResizable to False
+    Set piListRowSpan to 1
+    Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+    Set peAlign to alignRight
+    WebRegisterPath ntNavigateForward oZoomEntrenador
+    Procedure OnClick
+        Send NavigatePath
+    End_Procedure
+    Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+        Move True to NavigateData.bReadOnly
+        Send ShowInfoBox "Evento 1" "OnGetNavigateForwardData - DetailButton en SelectEntrenador - ANTES de navegar"
+    End_Procedure
+    Procedure OnNavigateBack tWebNavigateData NavigateData
+        Send ShowInfoBox "Evento 5" "OnNavigateBack - DetailButton en SelectEntrenador - HE VUELTO a Malaga"
+    End_Procedure
+End_Object
 
         WebRegisterPath ntNavigateForward oZoomEntrenador
 
@@ -132,6 +135,10 @@ Object oSelectEntrenador is a cWebView
         End_Object
 
     End_Object
+    
+    Procedure OnBeforeShow
+        Send ShowInfoBox "Evento 6" "OnBeforeShow - SelectEntrenador - VOLVIENDO a Malaga, vista actual de nuevo"
+    End_Procedure
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
         WebSet pbRender of oNewButton to True

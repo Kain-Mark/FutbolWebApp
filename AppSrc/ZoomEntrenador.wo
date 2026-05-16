@@ -40,7 +40,6 @@ Object oZoomEntrenador is a cWebView
         Set piColumnCount to 12
         WebSetResponsive piColumnCount rmMobile to 4
 
-        // --- Datos del entrenador ---
         Object oentrenadorID is a cWebForm
             Entry_Item entrenador.ID
             Set piColumnSpan to 2
@@ -73,7 +72,6 @@ Object oZoomEntrenador is a cWebView
             Set psLabel to "Nacionalidad"
         End_Object
 
-        // --- Equipo que entrena ---
         Object oequipoID is a cWebForm
             Entry_Item equipo.ID
             Set piColumnSpan to 2
@@ -111,6 +109,7 @@ Object oZoomEntrenador is a cWebView
             Set psCSSClass to "WebSaveMenuItem"
             Set psCaption to "Save"
             Procedure OnClick
+                Send ShowInfoBox "Evento 4" "OnClick SaveButton en ZoomEntrenador - ANTES de volver a Malaga"
                 Send Request_Save
             End_Procedure
         End_Object
@@ -173,9 +172,14 @@ Object oZoomEntrenador is a cWebView
         Send NavigateClose Self
     End_Procedure
 
+    Procedure OnBeforeShow
+        Send ShowInfoBox "Evento 3" "OnBeforeShow - ZoomEntrenador - JUSTO ANTES de mostrarse"
+    End_Procedure
+
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
+                Send ShowInfoBox "Evento 2" "OnNavigateForward - ZoomEntrenador - HE LLEGADO a Madrid"
                 Case Break
             Case (NavigateData.eNavigateType = nfFromParent)
                 Case Break
