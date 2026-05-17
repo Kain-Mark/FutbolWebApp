@@ -109,7 +109,7 @@ Object oZoomEntrenador is a cWebView
             Set psCSSClass to "WebSaveMenuItem"
             Set psCaption to "Save"
             Procedure OnClick
-                Send ShowInfoBox "Evento 4" "OnClick SaveButton en ZoomEntrenador - ANTES de volver a Malaga"
+                Send ShowInfoBox "Objecto que genera la vuelta, button save" "Estoy en Madrid todavía pero me vuelvo a Málaga"
                 Send Request_Save
             End_Procedure
         End_Object
@@ -173,13 +173,13 @@ Object oZoomEntrenador is a cWebView
     End_Procedure
 
     Procedure OnBeforeShow
-        Send ShowInfoBox "Evento 3" "OnBeforeShow - ZoomEntrenador - JUSTO ANTES de mostrarse"
+        Send ShowInfoBox "He llegado a Madrid" "OnBeforeShow - ZoomEntrenador se muestra"
     End_Procedure
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
-                Send ShowInfoBox "Evento 2" "OnNavigateForward - ZoomEntrenador - HE LLEGADO a Madrid"
+                Send ShowInfoBox "Vista invocada" "He llegado a Madrid desde Málaga"
                 Case Break
             Case (NavigateData.eNavigateType = nfFromParent)
                 Case Break

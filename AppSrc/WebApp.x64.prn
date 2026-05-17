@@ -1,5 +1,5 @@
 Compiling Program: C:\DataFlex Projects\FutbolWebApp\AppSrc\WebApp.src
-Memory Available: 41596592128
+Memory Available: 47407050752
 1>Use AllWebAppClasses.pkg
 Using pre-compiled package ALLWEBAPPCLASSES.PKG
 Including file: AllWebAppClasses.x64.pkd    (C:\Program Files\DataFlex 25.0\Pkg\AllWebAppClasses.x64.pkd)
@@ -3166,7 +3166,7 @@ Including file: hijoentrenador.fd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\hi
 38994>>>            Set psCSSClass to "WebSaveMenuItem"
 38995>>>            Set psCaption to "Save"
 38996>>>            Procedure OnClick
-38999>>>                Send ShowInfoBox "Evento 4" "OnClick SaveButton en ZoomEntrenador - ANTES de volver a Malaga"
+38999>>>                Send ShowInfoBox "Objecto que genera la vuelta, button save" "Estoy en Madrid todavía pero me vuelvo a Málaga"
 39000>>>                Send Request_Save
 39001>>>            End_Procedure
 39002>>>        End_Object
@@ -3233,13 +3233,13 @@ Including file: hijoentrenador.fd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\hi
 39064>>>    End_Procedure
 39065>>>
 39065>>>    Procedure OnBeforeShow
-39068>>>        Send ShowInfoBox "Evento 3" "OnBeforeShow - ZoomEntrenador - JUSTO ANTES de mostrarse"
+39068>>>        Send ShowInfoBox "He llegado a Madrid" "OnBeforeShow - ZoomEntrenador se muestra"
 39069>>>    End_Procedure
 39070>>>
 39070>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
 39073>>>        Case Begin
 39073>>>            Case (NavigateData.eNavigateType = nfFromMain)
-39075>>>                Send ShowInfoBox "Evento 2" "OnNavigateForward - ZoomEntrenador - HE LLEGADO a Madrid"
+39075>>>                Send ShowInfoBox "Vista invocada" "He llegado a Madrid desde Málaga"
 39076>>>                Case Break
 39077>>>            Case (NavigateData.eNavigateType = nfFromParent)
 39080>>>                Case Break
@@ -3320,113 +3320,114 @@ Including file: SelectEntrenador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc
 39138>>>            Set psCaption to "Equipo"
 39139>>>            Set piWidth to 600
 39140>>>        End_Object
-39141>>>Object oDetailButton is a cWebColumnButton
-39143>>>    Set psCaption to "btn"
-39144>>>    Set piWidth to 45
-39145>>>    Set pbFixedWidth to True
-39146>>>    Set pbResizable to False
-39147>>>    Set piListRowSpan to 1
-39148>>>    Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
-39149>>>    Set peAlign to alignRight
-39150>>>    WebRegisterPath ntNavigateForward oZoomEntrenador
-39156>>>    Procedure OnClick
-39159>>>        Send NavigatePath
-39160>>>    End_Procedure
-39161>>>    Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39164>>>        Move True to NavigateData.bReadOnly
-39165>>>        Send ShowInfoBox "Evento 1" "OnGetNavigateForwardData - DetailButton en SelectEntrenador - ANTES de navegar"
-39166>>>    End_Procedure
-39167>>>    Procedure OnNavigateBack tWebNavigateData NavigateData
-39170>>>        Send ShowInfoBox "Evento 5" "OnNavigateBack - DetailButton en SelectEntrenador - HE VUELTO a Malaga"
-39171>>>    End_Procedure
-39172>>>End_Object
-39173>>>
-39173>>>        WebRegisterPath ntNavigateForward oZoomEntrenador
-39179>>>
-39179>>>        Procedure OnRowClick String sRowId
-39182>>>            tWebNavigateData NavigateData
-39182>>>            tWebNavigateData NavigateData
-39182>>>            Get GetNavigateData to NavigateData
-39183>>>            Case Begin
-39183>>>                Case (NavigateData.eNavigateType = nfFromParent)
-39185>>>                    // From parent - pendiente hasta ver data dictionaries
-39185>>>                    Case Break
-39186>>>                Case (NavigateData.eNavigateType = nfFromChild)
-39189>>>                    Send NavigateClose Self
-39190>>>                    Case Break
-39191>>>                Case (NavigateData.eNavigateType = nfFromMain)
-39194>>>                    Send NavigateForward of oZoomEntrenador Self
-39195>>>                    Case Break
-39196>>>                Case Else
+39141>>>
+39141>>>        Object oDetailButton is a cWebColumnButton
+39143>>>            Set psCaption to "btn"
+39144>>>            Set piWidth to 45
+39145>>>            Set pbFixedWidth to True
+39146>>>            Set pbResizable to False
+39147>>>            Set piListRowSpan to 1
+39148>>>            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+39149>>>            Set peAlign to alignRight
+39150>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
+39156>>>            Procedure OnClick
+39159>>>                Send NavigatePath
+39160>>>            End_Procedure
+39161>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39164>>>                Move True to NavigateData.bReadOnly
+39165>>>                Send ShowInfoBox "DetailButton" "objeto q provoca la navegación"
+39166>>>            End_Procedure
+39167>>>            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
+39170>>>                Forward Send OnNavigateBack hoCallback NavigateData
+39172>>>                Send ShowInfoBox "Ya estoy en Málaga" "Entro en Málaga desde Madrid por el objeto q lo inició todo, cierro el ciclo"
+39173>>>            End_Procedure
+39174>>>        End_Object
+39175>>>
+39175>>>        WebRegisterPath ntNavigateForward oZoomEntrenador
+39181>>>
+39181>>>        Procedure OnRowClick String sRowId
+39184>>>            tWebNavigateData NavigateData
+39184>>>            tWebNavigateData NavigateData
+39184>>>            Get GetNavigateData to NavigateData
+39185>>>            Case Begin
+39185>>>                Case (NavigateData.eNavigateType = nfFromParent)
+39187>>>                    Case Break
+39188>>>                Case (NavigateData.eNavigateType = nfFromChild)
+39191>>>                    Send NavigateClose Self
+39192>>>                    Case Break
+39193>>>                Case (NavigateData.eNavigateType = nfFromMain)
 39196>>>                    Send NavigateForward of oZoomEntrenador Self
-39197>>>            Case End
-39197>>>        End_Procedure
-39198>>>
-39198>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39201>>>            Move True to NavigateData.bReadOnly
-39202>>>        End_Procedure
-39203>>>
-39203>>>    End_Object
-39204>>>
-39204>>>    Object oActionGroup is a cWebMenuGroup
+39197>>>                    Case Break
+39198>>>                Case Else
+39198>>>                    Send NavigateForward of oZoomEntrenador Self
+39199>>>            Case End
+39199>>>        End_Procedure
+39200>>>
+39200>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39203>>>            Move True to NavigateData.bReadOnly
+39204>>>        End_Procedure
+39205>>>
+39205>>>    End_Object
 39206>>>
-39206>>>        Object oSearch is a cWebMenuItem
-39208>>>            Set psCSSClass to "WebPromptMenuItem"
-39209>>>            Set psCaption to "Search"
-39210>>>            Procedure OnClick
-39213>>>                Send Search of oList
-39214>>>            End_Procedure
-39215>>>        End_Object
-39216>>>
-39216>>>        Object oNewButton is a cWebMenuItem
-39218>>>            Set psCSSClass to "WebClearMenuItem"
-39219>>>            Set psCaption to "New"
-39220>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
-39226>>>            Procedure OnClick
-39229>>>                Send NavigatePath
-39230>>>            End_Procedure
-39231>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39234>>>                Move True to NavigateData.bNewRecord
-39235>>>            End_Procedure
-39236>>>        End_Object
-39237>>>
-39237>>>    End_Object
-39238>>>    
-39238>>>    Procedure OnBeforeShow
-39241>>>        Send ShowInfoBox "Evento 6" "OnBeforeShow - SelectEntrenador - VOLVIENDO a Malaga, vista actual de nuevo"
-39242>>>    End_Procedure
-39243>>>
-39243>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-39246>>>        WebSet pbRender of oNewButton to True
-39247>>>        WebSet pbRender of oDetailButton to True
-39248>>>        Case Begin
-39248>>>            Case (NavigateData.eNavigateType = nfFromParent)
-39250>>>                Case Break
-39251>>>            Case (NavigateData.eNavigateType = nfFromChild)
-39254>>>                Case Break
-39255>>>            Case (NavigateData.eNavigateType = nfFromMain)
-39258>>>                WebSet pbRender of oDetailButton to False
-39259>>>                Case Break
-39260>>>            Case Else
-39260>>>        Case End
-39260>>>    End_Procedure
-39261>>>
-39261>>>End_Object
-39262>    Set phoDefaultView to oDashboard
-39263>
-39263>End_Object
-39264>
-39264>Send StartWebApp of oWebApp
+39206>>>    Object oActionGroup is a cWebMenuGroup
+39208>>>
+39208>>>        Object oSearch is a cWebMenuItem
+39210>>>            Set psCSSClass to "WebPromptMenuItem"
+39211>>>            Set psCaption to "Search"
+39212>>>            Procedure OnClick
+39215>>>                Send Search of oList
+39216>>>            End_Procedure
+39217>>>        End_Object
+39218>>>
+39218>>>        Object oNewButton is a cWebMenuItem
+39220>>>            Set psCSSClass to "WebClearMenuItem"
+39221>>>            Set psCaption to "New"
+39222>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
+39228>>>            Procedure OnClick
+39231>>>                Send NavigatePath
+39232>>>            End_Procedure
+39233>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39236>>>                Move True to NavigateData.bNewRecord
+39237>>>            End_Procedure
+39238>>>        End_Object
+39239>>>
+39239>>>    End_Object
+39240>>>
+39240>>>    Procedure OnBeforeShow
+39243>>>        Send ShowInfoBox "Ya estoy en Málaga" "OnBeforeShow - SelectEntrenador se muestra, navegación hacia adelante o vuelta"
+39244>>>    End_Procedure
+39245>>>
+39245>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+39248>>>        WebSet pbRender of oNewButton to True
+39249>>>        WebSet pbRender of oDetailButton to True
+39250>>>        Case Begin
+39250>>>            Case (NavigateData.eNavigateType = nfFromParent)
+39252>>>                Case Break
+39253>>>            Case (NavigateData.eNavigateType = nfFromChild)
+39256>>>                Case Break
+39257>>>            Case (NavigateData.eNavigateType = nfFromMain)
+39260>>>                WebSet pbRender of oDetailButton to False
+39261>>>                Case Break
+39262>>>            Case Else
+39262>>>        Case End
+39262>>>    End_Procedure
+39263>>>
+39263>>>End_Object
+39264>    Set phoDefaultView to oDashboard
 39265>
+39265>End_Object
+39266>
+39266>Send StartWebApp of oWebApp
+39267>
 Summary
-Memory Available: 41588723712
+Memory Available: 47398060032
 Total Warnings : 0
 Total Errors   : 0
 Total Symbols  : 25658
 Total Resources: 0
-Total Commands : 39264
+Total Commands : 39266
 Total Windows  : 0
 Total Pages    : 0
-Static Data    : 486653
-Message area   : 264674
+Static Data    : 486645
+Message area   : 264693
 Total Blocks   : 17420

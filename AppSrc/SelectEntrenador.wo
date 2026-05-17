@@ -65,26 +65,28 @@ Object oSelectEntrenador is a cWebView
             Set psCaption to "Equipo"
             Set piWidth to 600
         End_Object
-Object oDetailButton is a cWebColumnButton
-    Set psCaption to "btn"
-    Set piWidth to 45
-    Set pbFixedWidth to True
-    Set pbResizable to False
-    Set piListRowSpan to 1
-    Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
-    Set peAlign to alignRight
-    WebRegisterPath ntNavigateForward oZoomEntrenador
-    Procedure OnClick
-        Send NavigatePath
-    End_Procedure
-    Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-        Move True to NavigateData.bReadOnly
-        Send ShowInfoBox "Evento 1" "OnGetNavigateForwardData - DetailButton en SelectEntrenador - ANTES de navegar"
-    End_Procedure
-    Procedure OnNavigateBack tWebNavigateData NavigateData
-        Send ShowInfoBox "Evento 5" "OnNavigateBack - DetailButton en SelectEntrenador - HE VUELTO a Malaga"
-    End_Procedure
-End_Object
+
+        Object oDetailButton is a cWebColumnButton
+            Set psCaption to "btn"
+            Set piWidth to 45
+            Set pbFixedWidth to True
+            Set pbResizable to False
+            Set piListRowSpan to 1
+            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+            Set peAlign to alignRight
+            WebRegisterPath ntNavigateForward oZoomEntrenador
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Move True to NavigateData.bReadOnly
+                Send ShowInfoBox "DetailButton" "objeto q provoca la navegación"
+            End_Procedure
+            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
+                Forward Send OnNavigateBack hoCallback NavigateData
+                Send ShowInfoBox "Ya estoy en Málaga" "Entro en Málaga desde Madrid por el objeto q lo inició todo, cierro el ciclo"
+            End_Procedure
+        End_Object
 
         WebRegisterPath ntNavigateForward oZoomEntrenador
 
@@ -93,7 +95,6 @@ End_Object
             Get GetNavigateData to NavigateData
             Case Begin
                 Case (NavigateData.eNavigateType = nfFromParent)
-                    // From parent - pendiente hasta ver data dictionaries
                     Case Break
                 Case (NavigateData.eNavigateType = nfFromChild)
                     Send NavigateClose Self
@@ -135,9 +136,9 @@ End_Object
         End_Object
 
     End_Object
-    
+
     Procedure OnBeforeShow
-        Send ShowInfoBox "Evento 6" "OnBeforeShow - SelectEntrenador - VOLVIENDO a Malaga, vista actual de nuevo"
+        Send ShowInfoBox "Ya estoy en Málaga" "OnBeforeShow - SelectEntrenador se muestra, navegación hacia adelante o vuelta"
     End_Procedure
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
