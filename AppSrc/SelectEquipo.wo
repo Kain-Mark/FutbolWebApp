@@ -149,28 +149,28 @@ Object oSelectEquipo is a cWebView
     End_Object
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-    String sTipoHijo
-    WebSet pbRender of oNewButton to True
-    WebSet pbRender of oDetailButton to True
+        String sTipoHijo
+        WebSet pbRender of oNewButton to True
+        WebSet pbRender of oDetailButton to True
 
-    Case Begin
-        Case (NavigateData.eNavigateType = nfFromParent)
-            Case Break
+        Case Begin
+            Case (NavigateData.eNavigateType = nfFromParent)
+                Case Break
 
-        Case (NavigateData.eNavigateType = nfFromChild)
-            Move (NamedValueGet(NavigateData.NamedValues, "hijo")) to sTipoHijo
-            Send ShowInfoBox ("Vengo desde un " + sTipoHijo) "Mensaje de mi hijo"
-            Case Break
+            Case (NavigateData.eNavigateType = nfFromChild)
+                Move (NamedValueGet(NavigateData.NamedValues, "hijo")) to sTipoHijo
+                Send ShowInfoBox ("Vengo desde un " + sTipoHijo) "Mensaje de mi hijo"
+                Case Break
 
-        Case (NavigateData.eNavigateType = nfFromMain)
-            WebSet pbRender of oDetailButton to False
-            Case Break
+            Case (NavigateData.eNavigateType = nfFromMain)
+                WebSet pbRender of oDetailButton to False
+                Case Break
 
-        Case Else
-            Case Break
+            Case Else
+                Case Break
 
-    Case End
+        Case End
 
-End_Procedure
+    End_Procedure
 
 End_Object
