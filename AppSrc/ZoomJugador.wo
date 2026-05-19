@@ -84,6 +84,9 @@ Object oZoomJugador is a cWebView
             Procedure OnPrompt
                 Send NavigatePath
             End_Procedure
+           Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+    Get NamedValueAdd NavigateData.NamedValues "hijo" "jugador" to NavigateData.NamedValues
+End_Procedure
         End_Object
 
         Object oequipoNombre is a cWebForm

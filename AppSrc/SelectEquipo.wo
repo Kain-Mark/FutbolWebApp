@@ -22,11 +22,11 @@ Object oSelectEquipo is a cWebView
     Set piMaxWidth to 1024
 
     Object oliga_DD is a cligaDataDictionary
-    End_Object 
+    End_Object
 
     Object oequipo_DD is a cequipoDataDictionary
         Set DDO_Server to oliga_DD
-    End_Object 
+    End_Object
 
     Set Main_DD to oequipo_DD
     Set Server  to oequipo_DD
@@ -43,43 +43,43 @@ Object oSelectEquipo is a cWebView
             Entry_Item liga.Nombre
             Set psCaption to "liga.Nombre"
             Set piWidth to 1000
-        End_Object 
+        End_Object
 
         Object oligaPais is a cWebColumn
             Entry_Item liga.Pais
             Set psCaption to "liga.Pais"
             Set piWidth to 500
-        End_Object 
+        End_Object
 
         Object oligaEquipos is a cWebColumn
             Entry_Item liga.Equipos
             Set psCaption to "liga.Equipos"
             Set piWidth to 100
-        End_Object 
+        End_Object
 
         Object oligaEquiposMax is a cWebColumn
             Entry_Item liga.EquiposMax
             Set psCaption to "liga.EquiposMax"
             Set piWidth to 100
-        End_Object 
+        End_Object
 
         Object oequipoID is a cWebColumn
             Entry_Item equipo.ID
             Set psCaption to "equipo.ID"
             Set piWidth to 100
-        End_Object 
+        End_Object
 
         Object oequipoNombre is a cWebColumn
             Entry_Item equipo.Nombre
             Set psCaption to "equipo.Nombre"
             Set piWidth to 1201
-        End_Object 
+        End_Object
 
         Object oligaID is a cWebColumn
             Entry_Item liga.ID
             Set psCaption to "equipo.LigaID"
             Set piWidth to 100
-        End_Object 
+        End_Object
 
         Object oDetailButton is a cWebColumnButton
             Set psCaption to "btn"
@@ -89,41 +89,32 @@ Object oSelectEquipo is a cWebView
             Set piListRowSpan to 1
             Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
             Set peAlign to alignRight
-
             WebRegisterPath ntNavigateForward oZoomEquipo
-
             Procedure OnClick
                 Send NavigatePath
             End_Procedure
-
             Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
                 Move True to NavigateData.bReadOnly
             End_Procedure
-
-        End_Object 
+        End_Object
 
         WebRegisterPath ntNavigateForward oZoomEquipo
 
         Procedure OnRowClick String sRowId
             tWebNavigateData NavigateData
             Get GetNavigateData to NavigateData
-
             Case Begin
                 Case (NavigateData.eNavigateType = nfFromParent)
                     Send NavigateForward of oZoomEquipo Self
                     Case Break
-
                 Case (NavigateData.eNavigateType = nfFromChild)
                     Send NavigateClose Self
                     Case Break
-
                 Case (NavigateData.eNavigateType = nfFromMain)
                     Send NavigateClose Self
                     Case Break
-
                 Case Else
                     Send NavigateForward of oZoomEquipo Self
-
             Case End
         End_Procedure
 
@@ -131,57 +122,55 @@ Object oSelectEquipo is a cWebView
             Move True to NavigateData.bReadOnly
         End_Procedure
 
-    End_Object 
+    End_Object
 
     Object oActionGroup is a cWebMenuGroup
 
         Object oSearch is a cWebMenuItem
             Set psCSSClass to "WebPromptMenuItem"
             Set psCaption to "Search"
-
             Procedure OnClick
                 Send Search of oList
             End_Procedure
-
-        End_Object 
+        End_Object
 
         Object oNewButton is a cWebMenuItem
             Set psCSSClass to "WebClearMenuItem"
             Set psCaption to "New"
-
             WebRegisterPath ntNavigateForward oZoomEquipo
-
             Procedure OnClick
                 Send NavigatePath
             End_Procedure
-
             Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
                 Move True to NavigateData.bNewRecord
             End_Procedure
+        End_Object
 
-        End_Object 
-    End_Object 
+    End_Object
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-        WebSet pbRender of oNewButton to True
-        WebSet pbRender of oDetailButton to True
+    String sTipoHijo
+    WebSet pbRender of oNewButton to True
+    WebSet pbRender of oDetailButton to True
 
-        Case Begin
-            Case (NavigateData.eNavigateType = nfFromParent)
-                Case Break
+    Case Begin
+        Case (NavigateData.eNavigateType = nfFromParent)
+            Case Break
 
-            Case (NavigateData.eNavigateType = nfFromChild)
-                Case Break
+        Case (NavigateData.eNavigateType = nfFromChild)
+            Move (NamedValueGet(NavigateData.NamedValues, "hijo")) to sTipoHijo
+            Send ShowInfoBox ("Vengo desde un " + sTipoHijo) "Mensaje de mi hijo"
+            Case Break
 
-            Case (NavigateData.eNavigateType = nfFromMain)
-                WebSet pbRender of oDetailButton to False
-                Case Break
+        Case (NavigateData.eNavigateType = nfFromMain)
+            WebSet pbRender of oDetailButton to False
+            Case Break
 
-            Case Else
-                Case Break
+        Case Else
+            Case Break
 
-        Case End
+    Case End
 
-    End_Procedure
+End_Procedure
 
 End_Object
