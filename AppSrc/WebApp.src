@@ -9,7 +9,7 @@ Object oApplication is a cApplication
 End_Object
 
 Object oWebApp is a cWebApp
-    Set psTheme to "Df_Material"
+    Set psTheme to "verde"
     Set peAlignView to alignCenter
     
     // It is important to set this so that all views will default
@@ -41,7 +41,7 @@ Object oWebApp is a cWebApp
                 Set piMenuHeight to 500
 
                 Object oDashboard_itm is a cWebMenuItem
-                    Set psCaption to C_$Dashboard
+                    Set psCaption to "Inicio"
                     
                     WebRegisterPath ntNavigateBegin oDashboard
 
