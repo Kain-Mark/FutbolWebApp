@@ -84,6 +84,15 @@ Object oZoomJugador is a cWebView
             Procedure OnPrompt
                 Send NavigatePath
             End_Procedure
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Get NamedValueAdd NavigateData.NamedValues "hijo" "jugador" to NavigateData.NamedValues
+            End_Procedure
+            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
+                String sMensaje
+                Forward Send OnNavigateBack hoCallback NavigateData
+                Move (NamedValueGet(NavigateData.NamedValues, "padre")) to sMensaje
+                Send ShowInfoBox "Mensaje de mi padre" sMensaje
+            End_Procedure
         End_Object
 
         Object oequipoNombre is a cWebForm
@@ -141,6 +150,15 @@ Object oZoomJugador is a cWebView
             End_Procedure
         End_Object
 
+        Object oDespedirBtn is a cWebMenuItem
+            Set psCSSClass to "WebDeleteMenuItem"
+            Set psCaption to "Despedir"
+            Set peActionDisplay to adMenu
+            Procedure OnClick
+                Send Clear of oequipo_DD
+            End_Procedure
+        End_Object
+
         Object oPosicionBtn is a cWebMenuItem
             Set psCSSClass to "WebIcon_ArrowRight"
             Set psCaption to "Ver Posición"
@@ -164,6 +182,7 @@ Object oZoomJugador is a cWebView
         WebSet pbRender of oSaveBtn to False
         WebSet pbRender of oCancelChangesBtn to False
         WebSet pbRender of oDeleteBtn to False
+        WebSet pbRender of oDespedirBtn to False
         If (NavigateData.bReadOnly) Begin
             WebSet pbRender of oEditBtn to True
         End
@@ -171,6 +190,7 @@ Object oZoomJugador is a cWebView
             WebSet pbRender of oSaveBtn to True
             WebSet pbRender of oCancelChangesBtn to True
             WebSet pbRender of oDeleteBtn to bHasRecord
+            WebSet pbRender of oDespedirBtn to True
         End
     End_Procedure
 

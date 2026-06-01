@@ -1,5 +1,5 @@
 Compiling Program: C:\DataFlex Projects\FutbolWebApp\AppSrc\WebApp.src
-Memory Available: 39972380672
+Memory Available: 39748235264
 1>Use AllWebAppClasses.pkg
 Using pre-compiled package ALLWEBAPPCLASSES.PKG
 Including file: AllWebAppClasses.x64.pkd    (C:\Program Files\DataFlex 25.0\Pkg\AllWebAppClasses.x64.pkd)
@@ -2660,7 +2660,6 @@ Including file: ZoomJugador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\Zoom
 38484>>>Use cjugadorDataDictionary.dd
 Including file: cjugadorDataDictionary.dd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\cjugadorDataDictionary.dd)
 38484>>>>>Use DataDict.pkg
-38484>>>>>
 38484>>>>>Open jugador
 38486>>>>>Open hijojugador
 Including file: hijojugador.fd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\hijojugador.fd)
@@ -2672,786 +2671,803 @@ Including file: hijojugador.fd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\hijoj
 38493>>>>>    Procedure Construct_Object
 38495>>>>>        Forward Send Construct_Object
 38497>>>>>        Set Main_File to jugador.File_Number
-38498>>>>>
 38498>>>>>        Set Add_Server_File to equipo.File_Number
-38499>>>>>
-38499>>>>>        Set Add_Client_File to hijojugador.File_Number
-38500>>>>>        Set Add_Client_File to jugadorposicion.File_Number
-38501>>>>>
-38501>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-38502>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
-38503>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
-38504>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
-38505>>>>>
-38505>>>>>    End_Procedure
-38506>>>>>
-38506>>>>>End_Class
-38507>>>
-38507>>>Object oZoomJugador is a cWebView
-38509>>>    Set piColumnCount to 12
-38510>>>    Set psCaption to "ZoomJugador"
-38511>>>    Set peWebViewStyle to wvsDrilldown
-38512>>>    Set peViewType to vtZoom
-38513>>>    Set pbShowCaption to False
-38514>>>    Set psCSSClass to "ZoomJugador"
-38515>>>    Set Verify_Save_Msg to 0
-38516>>>    Set piMaxWidth to 1024
-38517>>>
-38517>>>    Object oliga_DD is a cligaDataDictionary
-38519>>>    End_Object
-38520>>>
-38520>>>    Object oequipo_DD is a cequipoDataDictionary
-38522>>>        Set DDO_Server to oliga_DD
-38523>>>    End_Object
-38524>>>
-38524>>>    Object ojugador_DD is a cjugadorDataDictionary
-38526>>>        Set DDO_Server to oequipo_DD
-38527>>>    End_Object
-38528>>>
-38528>>>    Set Main_DD to ojugador_DD
-38529>>>    Set Server  to ojugador_DD
-38530>>>
-38530>>>    Object oWebMainPanel is a cWebPanel
-38532>>>        Set piColumnCount to 12
-38533>>>        WebSetResponsive piColumnCount rmMobile to 4
-38534>>>
-38534>>>        Object ojugadorID is a cWebForm
-38536>>>            Entry_Item jugador.ID
-38537>>>            Set piColumnSpan to 2
-38538>>>            Set piColumnIndex to 0
-38539>>>            Set peLabelPosition to lpTop
-38540>>>            Set psLabel to "ID"
-38541>>>        End_Object
-38542>>>
-38542>>>        Object ojugadorNombre is a cWebForm
-38544>>>            Entry_Item jugador.Nombre
-38545>>>            Set piColumnSpan to 5
-38546>>>            Set piColumnIndex to 2
-38547>>>            Set peLabelPosition to lpTop
-38548>>>            Set psLabel to "Nombre"
-38549>>>        End_Object
-38550>>>
-38550>>>        Object ojugadorApellido is a cWebForm
-38552>>>            Entry_Item jugador.Apellido
-38553>>>            Set piColumnSpan to 5
-38554>>>            Set piColumnIndex to 7
-38555>>>            Set peLabelPosition to lpTop
-38556>>>            Set psLabel to "Apellido"
-38557>>>        End_Object
-38558>>>
-38558>>>        Object ojugadorNacionalidad is a cWebForm
-38560>>>            Entry_Item jugador.Nacionalidad
-38561>>>            Set piColumnSpan to 6
-38562>>>            Set piColumnIndex to 0
-38563>>>            Set peLabelPosition to lpTop
-38564>>>            Set psLabel to "Nacionalidad"
-38565>>>        End_Object
-38566>>>
-38566>>>        Object oequipoID is a cWebForm
-38568>>>            Entry_Item equipo.ID
-38569>>>            Set piColumnSpan to 2
-38570>>>            Set piColumnIndex to 0
-38571>>>            Set peLabelPosition to lpTop
-38572>>>            Set psLabel to "Equipo ID"
-38573>>>            Set pbPromptButton to True
-38574>>>            WebRegisterPath ntNavigateForward oSelectEquipo
-38580>>>            Procedure OnPrompt
-38583>>>                Send NavigatePath
-38584>>>            End_Procedure
-38585>>>        End_Object
-38586>>>
-38586>>>        Object oequipoNombre is a cWebForm
-38588>>>            Entry_Item equipo.Nombre
-38589>>>            Set piColumnSpan to 6
-38590>>>            Set piColumnIndex to 2
-38591>>>            Set peLabelPosition to lpTop
-38592>>>            Set psLabel to "Equipo"
-38593>>>        End_Object
-38594>>>
-38594>>>        Object oligaNombre is a cWebForm
-38596>>>            Entry_Item liga.Nombre
-38597>>>            Set piColumnSpan to 4
-38598>>>            Set piColumnIndex to 8
-38599>>>            Set peLabelPosition to lpTop
-38600>>>            Set psLabel to "Liga"
-38601>>>        End_Object
-38602>>>
-38602>>>    End_Object
-38603>>>
-38603>>>    Object oActionGroup is a cWebMenuGroup
-38605>>>
-38605>>>        Object oSaveBtn is a cWebMenuItem
-38607>>>            Set psCSSClass to "WebSaveMenuItem"
-38608>>>            Set psCaption to "Save"
-38609>>>            Procedure OnClick
-38612>>>                Send Request_Save
-38613>>>            End_Procedure
-38614>>>        End_Object
-38615>>>
-38615>>>        Object oEditBtn is a cWebMenuItem
-38617>>>            Set psCSSClass to "WebEditMenuItem"
-38618>>>            Set psCaption to "Edit"
-38619>>>            Procedure OnClick
-38622>>>                Send ChangeEditMode True
-38623>>>                Send SetActionButtons
-38624>>>            End_Procedure
-38625>>>        End_Object
-38626>>>
-38626>>>        Object oDeleteBtn is a cWebMenuItem
-38628>>>            Set psCSSClass to "WebDeleteMenuItem"
-38629>>>            Set psCaption to "Delete"
-38630>>>            Set peActionDisplay to adMenu
-38631>>>            Procedure OnClick
-38634>>>                Send Request_Delete
-38635>>>            End_Procedure
-38636>>>        End_Object
-38637>>>
-38637>>>        Object oCancelChangesBtn is a cWebMenuItem
-38639>>>            Set psCSSClass to "WebIcon_Refresh"
-38640>>>            Set psCaption to "Clear Changes"
-38641>>>            Set peActionDisplay to adMenu
-38642>>>            Procedure OnClick
-38645>>>                Send RefreshRecord
-38646>>>            End_Procedure
-38647>>>        End_Object
-38648>>>
-38648>>>        Object oPosicionBtn is a cWebMenuItem
-38650>>>            Set psCSSClass to "WebIcon_ArrowRight"
-38651>>>            Set psCaption to "Ver Posición"
-38652>>>            Set peActionDisplay to adMenu
-38653>>>            WebRegisterPath ntNavigateForwardCustom oSelectPosicion
-38659>>>            Procedure OnClick
-38662>>>                Send NavigatePath
-38663>>>            End_Procedure
-38664>>>        End_Object
-38665>>>
-38665>>>    End_Object
-38666>>>
-38666>>>    Procedure SetActionButtons
-38669>>>        tWebNavigateData NavigateData
-38669>>>        tWebNavigateData NavigateData
-38669>>>        Boolean bHasRecord
-38669>>>        Handle hoDD
-38669>>>        Get Server to hoDD
-38670>>>        Get GetNavigateData to NavigateData
-38671>>>        Get HasRecord of hoDD to bHasRecord
-38672>>>        WebSet pbRender of oEditBtn to False
-38673>>>        WebSet pbRender of oSaveBtn to False
-38674>>>        WebSet pbRender of oCancelChangesBtn to False
-38675>>>        WebSet pbRender of oDeleteBtn to False
-38676>>>        If (NavigateData.bReadOnly) Begin
-38678>>>            WebSet pbRender of oEditBtn to True
-38679>>>        End
-38679>>>>
-38679>>>        Else Begin
-38680>>>            WebSet pbRender of oSaveBtn to True
-38681>>>            WebSet pbRender of oCancelChangesBtn to True
-38682>>>            WebSet pbRender of oDeleteBtn to bHasRecord
-38683>>>        End
-38683>>>>
-38683>>>    End_Procedure
-38684>>>
-38684>>>    Procedure OnViewSaved Handle hoServer Boolean bChanged
-38687>>>        Send NavigateClose Self
-38688>>>    End_Procedure
-38689>>>
-38689>>>    Procedure OnViewDeleted Handle hoDDO
-38692>>>        Send NavigateClose Self
-38693>>>    End_Procedure
-38694>>>
-38694>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-38697>>>        Case Begin
-38697>>>            Case (NavigateData.eNavigateType = nfFromMain)
-38699>>>                Case Break
-38700>>>            Case (NavigateData.eNavigateType = nfFromParent)
-38703>>>                Case Break
-38704>>>            Case (NavigateData.eNavigateType = nfFromChild)
-38707>>>                Case Break
-38708>>>            Case Else
-38708>>>        Case End
-38708>>>        Send SetActionButtons
-38709>>>    End_Procedure
-38710>>>
-38710>>>End_Object
-38711>    Use SelectJugador.wo
-Including file: SelectJugador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectJugador.wo)
-38711>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectJugador.wo
-38711>>>// SelectJugador
-38711>>>//
-38711>>>Use cWebView.pkg
-38711>>>Use cWebList.pkg
-38711>>>Use cWebMenuGroup.pkg
-38711>>>Use cWebMenuItem.pkg
-38711>>>Use cWebColumnButton.pkg
-38711>>>Use cWebColumn.pkg
-38711>>>Use ZoomJugador.wo
-38711>>>Use cligaDataDictionary.dd
-38711>>>Use cequipoDataDictionary.dd
-38711>>>Use cjugadorDataDictionary.dd
+38499>>>>>        Set ParentNullAllowed equipo.File_Number to True
+38500>>>>>        Set Add_Client_File to hijojugador.File_Number
+38501>>>>>        Set Add_Client_File to jugadorposicion.File_Number
+38502>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+38503>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+38504>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+38505>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+38506>>>>>    End_Procedure
+38507>>>>>
+38507>>>>>End_Class
+38508>>>
+38508>>>Object oZoomJugador is a cWebView
+38510>>>    Set piColumnCount to 12
+38511>>>    Set psCaption to "ZoomJugador"
+38512>>>    Set peWebViewStyle to wvsDrilldown
+38513>>>    Set peViewType to vtZoom
+38514>>>    Set pbShowCaption to False
+38515>>>    Set psCSSClass to "ZoomJugador"
+38516>>>    Set Verify_Save_Msg to 0
+38517>>>    Set piMaxWidth to 1024
+38518>>>
+38518>>>    Object oliga_DD is a cligaDataDictionary
+38520>>>    End_Object
+38521>>>
+38521>>>    Object oequipo_DD is a cequipoDataDictionary
+38523>>>        Set DDO_Server to oliga_DD
+38524>>>    End_Object
+38525>>>
+38525>>>    Object ojugador_DD is a cjugadorDataDictionary
+38527>>>        Set DDO_Server to oequipo_DD
+38528>>>    End_Object
+38529>>>
+38529>>>    Set Main_DD to ojugador_DD
+38530>>>    Set Server  to ojugador_DD
+38531>>>
+38531>>>    Object oWebMainPanel is a cWebPanel
+38533>>>        Set piColumnCount to 12
+38534>>>        WebSetResponsive piColumnCount rmMobile to 4
+38535>>>
+38535>>>        Object ojugadorID is a cWebForm
+38537>>>            Entry_Item jugador.ID
+38538>>>            Set piColumnSpan to 2
+38539>>>            Set piColumnIndex to 0
+38540>>>            Set peLabelPosition to lpTop
+38541>>>            Set psLabel to "ID"
+38542>>>        End_Object
+38543>>>
+38543>>>        Object ojugadorNombre is a cWebForm
+38545>>>            Entry_Item jugador.Nombre
+38546>>>            Set piColumnSpan to 5
+38547>>>            Set piColumnIndex to 2
+38548>>>            Set peLabelPosition to lpTop
+38549>>>            Set psLabel to "Nombre"
+38550>>>        End_Object
+38551>>>
+38551>>>        Object ojugadorApellido is a cWebForm
+38553>>>            Entry_Item jugador.Apellido
+38554>>>            Set piColumnSpan to 5
+38555>>>            Set piColumnIndex to 7
+38556>>>            Set peLabelPosition to lpTop
+38557>>>            Set psLabel to "Apellido"
+38558>>>        End_Object
+38559>>>
+38559>>>        Object ojugadorNacionalidad is a cWebForm
+38561>>>            Entry_Item jugador.Nacionalidad
+38562>>>            Set piColumnSpan to 6
+38563>>>            Set piColumnIndex to 0
+38564>>>            Set peLabelPosition to lpTop
+38565>>>            Set psLabel to "Nacionalidad"
+38566>>>        End_Object
+38567>>>
+38567>>>        Object oequipoID is a cWebForm
+38569>>>            Entry_Item equipo.ID
+38570>>>            Set piColumnSpan to 2
+38571>>>            Set piColumnIndex to 0
+38572>>>            Set peLabelPosition to lpTop
+38573>>>            Set psLabel to "Equipo ID"
+38574>>>            Set pbPromptButton to True
+38575>>>            WebRegisterPath ntNavigateForward oSelectEquipo
+38581>>>            Procedure OnPrompt
+38584>>>                Send NavigatePath
+38585>>>            End_Procedure
+38586>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+38589>>>                Get NamedValueAdd NavigateData.NamedValues "hijo" "jugador" to NavigateData.NamedValues
+38590>>>            End_Procedure
+38591>>>            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
+38594>>>                String sMensaje
+38594>>>                Forward Send OnNavigateBack hoCallback NavigateData
+38596>>>                Move (NamedValueGet(NavigateData.NamedValues, "padre")) to sMensaje
+38597>>>                Send ShowInfoBox "Mensaje de mi padre" sMensaje
+38598>>>            End_Procedure
+38599>>>        End_Object
+38600>>>
+38600>>>        Object oequipoNombre is a cWebForm
+38602>>>            Entry_Item equipo.Nombre
+38603>>>            Set piColumnSpan to 6
+38604>>>            Set piColumnIndex to 2
+38605>>>            Set peLabelPosition to lpTop
+38606>>>            Set psLabel to "Equipo"
+38607>>>        End_Object
+38608>>>
+38608>>>        Object oligaNombre is a cWebForm
+38610>>>            Entry_Item liga.Nombre
+38611>>>            Set piColumnSpan to 4
+38612>>>            Set piColumnIndex to 8
+38613>>>            Set peLabelPosition to lpTop
+38614>>>            Set psLabel to "Liga"
+38615>>>        End_Object
+38616>>>
+38616>>>    End_Object
+38617>>>
+38617>>>    Object oActionGroup is a cWebMenuGroup
+38619>>>
+38619>>>        Object oSaveBtn is a cWebMenuItem
+38621>>>            Set psCSSClass to "WebSaveMenuItem"
+38622>>>            Set psCaption to "Save"
+38623>>>            Procedure OnClick
+38626>>>                Send Request_Save
+38627>>>            End_Procedure
+38628>>>        End_Object
+38629>>>
+38629>>>        Object oEditBtn is a cWebMenuItem
+38631>>>            Set psCSSClass to "WebEditMenuItem"
+38632>>>            Set psCaption to "Edit"
+38633>>>            Procedure OnClick
+38636>>>                Send ChangeEditMode True
+38637>>>                Send SetActionButtons
+38638>>>            End_Procedure
+38639>>>        End_Object
+38640>>>
+38640>>>        Object oDeleteBtn is a cWebMenuItem
+38642>>>            Set psCSSClass to "WebDeleteMenuItem"
+38643>>>            Set psCaption to "Delete"
+38644>>>            Set peActionDisplay to adMenu
+38645>>>            Procedure OnClick
+38648>>>                Send Request_Delete
+38649>>>            End_Procedure
+38650>>>        End_Object
+38651>>>
+38651>>>        Object oCancelChangesBtn is a cWebMenuItem
+38653>>>            Set psCSSClass to "WebIcon_Refresh"
+38654>>>            Set psCaption to "Clear Changes"
+38655>>>            Set peActionDisplay to adMenu
+38656>>>            Procedure OnClick
+38659>>>                Send RefreshRecord
+38660>>>            End_Procedure
+38661>>>        End_Object
+38662>>>
+38662>>>        Object oDespedirBtn is a cWebMenuItem
+38664>>>            Set psCSSClass to "WebDeleteMenuItem"
+38665>>>            Set psCaption to "Despedir"
+38666>>>            Set peActionDisplay to adMenu
+38667>>>            Procedure OnClick
+38670>>>                Send Clear of oequipo_DD
+38671>>>            End_Procedure
+38672>>>        End_Object
+38673>>>
+38673>>>        Object oPosicionBtn is a cWebMenuItem
+38675>>>            Set psCSSClass to "WebIcon_ArrowRight"
+38676>>>            Set psCaption to "Ver Posición"
+38677>>>            Set peActionDisplay to adMenu
+38678>>>            WebRegisterPath ntNavigateForwardCustom oSelectPosicion
+38684>>>            Procedure OnClick
+38687>>>                Send NavigatePath
+38688>>>            End_Procedure
+38689>>>        End_Object
+38690>>>
+38690>>>    End_Object
+38691>>>
+38691>>>    Procedure SetActionButtons
+38694>>>        tWebNavigateData NavigateData
+38694>>>        tWebNavigateData NavigateData
+38694>>>        Boolean bHasRecord
+38694>>>        Handle hoDD
+38694>>>        Get Server to hoDD
+38695>>>        Get GetNavigateData to NavigateData
+38696>>>        Get HasRecord of hoDD to bHasRecord
+38697>>>        WebSet pbRender of oEditBtn to False
+38698>>>        WebSet pbRender of oSaveBtn to False
+38699>>>        WebSet pbRender of oCancelChangesBtn to False
+38700>>>        WebSet pbRender of oDeleteBtn to False
+38701>>>        WebSet pbRender of oDespedirBtn to False
+38702>>>        If (NavigateData.bReadOnly) Begin
+38704>>>            WebSet pbRender of oEditBtn to True
+38705>>>        End
+38705>>>>
+38705>>>        Else Begin
+38706>>>            WebSet pbRender of oSaveBtn to True
+38707>>>            WebSet pbRender of oCancelChangesBtn to True
+38708>>>            WebSet pbRender of oDeleteBtn to bHasRecord
+38709>>>            WebSet pbRender of oDespedirBtn to True
+38710>>>        End
+38710>>>>
+38710>>>    End_Procedure
 38711>>>
-38711>>>Object oSelectJugador is a cWebView
-38713>>>    Set psCaption to "SelectJugador"
-38714>>>    Set peWebViewStyle to wvsDrilldown
-38715>>>    Set peViewType to vtSelect
-38716>>>    Set piColumnCount to 12
-38717>>>    Set pbShowCaption to False
-38718>>>    Set piMaxWidth to 1024
-38719>>>
-38719>>>    Object oliga_DD is a cligaDataDictionary
-38721>>>    End_Object 
-38722>>>
-38722>>>    Object oequipo_DD is a cequipoDataDictionary
-38724>>>        Set DDO_Server to oliga_DD
-38725>>>    End_Object 
-38726>>>
-38726>>>    Object ojugador_DD is a cjugadorDataDictionary
-38728>>>        Set DDO_Server to oequipo_DD
-38729>>>    End_Object 
-38730>>>
-38730>>>    Set Main_DD to ojugador_DD
-38731>>>    Set Server  to ojugador_DD
-38732>>>
-38732>>>    Object oList is a cWebList
-38734>>>        Set piColumnSpan to 0
-38735>>>        Set psCSSClass to "MobileList"
-38736>>>        Set pbServerOnRowClick to True
-38737>>>        Set pbFillHeight to True
-38738>>>        Set pbShowHeader to True
-38739>>>        Set piSortColumn to 0
-38740>>>
-38740>>>        Object ojugadorNombre is a cWebColumn
-38742>>>            Entry_Item jugador.Nombre
-38743>>>            Set psCaption to "Nombre"
-38744>>>            Set piWidth to 600
-38745>>>        End_Object 
+38711>>>    Procedure OnViewSaved Handle hoServer Boolean bChanged
+38714>>>        Send NavigateClose Self
+38715>>>    End_Procedure
+38716>>>
+38716>>>    Procedure OnViewDeleted Handle hoDDO
+38719>>>        Send NavigateClose Self
+38720>>>    End_Procedure
+38721>>>
+38721>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+38724>>>        Case Begin
+38724>>>            Case (NavigateData.eNavigateType = nfFromMain)
+38726>>>                Case Break
+38727>>>            Case (NavigateData.eNavigateType = nfFromParent)
+38730>>>                Case Break
+38731>>>            Case (NavigateData.eNavigateType = nfFromChild)
+38734>>>                Case Break
+38735>>>            Case Else
+38735>>>        Case End
+38735>>>        Send SetActionButtons
+38736>>>    End_Procedure
+38737>>>
+38737>>>End_Object
+38738>    Use SelectJugador.wo
+Including file: SelectJugador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectJugador.wo)
+38738>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectJugador.wo
+38738>>>// SelectJugador
+38738>>>//
+38738>>>Use cWebView.pkg
+38738>>>Use cWebList.pkg
+38738>>>Use cWebMenuGroup.pkg
+38738>>>Use cWebMenuItem.pkg
+38738>>>Use cWebColumnButton.pkg
+38738>>>Use cWebColumn.pkg
+38738>>>Use ZoomJugador.wo
+38738>>>Use cligaDataDictionary.dd
+38738>>>Use cequipoDataDictionary.dd
+38738>>>Use cjugadorDataDictionary.dd
+38738>>>
+38738>>>Object oSelectJugador is a cWebView
+38740>>>    Set psCaption to "SelectJugador"
+38741>>>    Set peWebViewStyle to wvsDrilldown
+38742>>>    Set peViewType to vtSelect
+38743>>>    Set piColumnCount to 12
+38744>>>    Set pbShowCaption to False
+38745>>>    Set piMaxWidth to 1024
 38746>>>
-38746>>>        Object ojugadorApellido is a cWebColumn
-38748>>>            Entry_Item jugador.Apellido
-38749>>>            Set psCaption to "Apellido"
-38750>>>            Set piWidth to 600
-38751>>>        End_Object 
-38752>>>
-38752>>>        Object ojugadorNacionalidad is a cWebColumn
-38754>>>            Entry_Item jugador.Nacionalidad
-38755>>>            Set psCaption to "Nacionalidad"
-38756>>>            Set piWidth to 500
-38757>>>        End_Object 
-38758>>>
-38758>>>        Object oequipoNombre is a cWebColumn
-38760>>>            Entry_Item equipo.Nombre
-38761>>>            Set psCaption to "Equipo"
-38762>>>            Set piWidth to 600
-38763>>>        End_Object 
-38764>>>
-38764>>>        Object oDetailButton is a cWebColumnButton
-38766>>>            Set psCaption to "Info"
-38767>>>            Set piWidth to 45
-38768>>>            Set pbFixedWidth to True
-38769>>>            Set pbResizable to False
-38770>>>            Set piListRowSpan to 1
-38771>>>            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
-38772>>>            Set peAlign to alignRight
-38773>>>            WebRegisterPath ntNavigateForward oZoomJugador
-38779>>>            Procedure OnClick
-38782>>>                Send NavigatePath
-38783>>>            End_Procedure
-38784>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-38787>>>                Move True to NavigateData.bReadOnly
-38788>>>            End_Procedure
-38789>>>        End_Object 
-38790>>>
-38790>>>        WebRegisterPath ntNavigateForward oZoomJugador
-38796>>>
-38796>>>        Procedure OnRowClick String sRowId
-38799>>>            tWebNavigateData NavigateData
-38799>>>            tWebNavigateData NavigateData
-38799>>>            Get GetNavigateData to NavigateData
-38800>>>            Case Begin
-38800>>>                Case (NavigateData.eNavigateType = nfFromParent)
-38802>>>                    // From parent - pendiente hasta ver data dictionaries
-38802>>>                    Case Break
-38803>>>                Case (NavigateData.eNavigateType = nfFromChild)
-38806>>>                    Send NavigateClose Self
-38807>>>                    Case Break
-38808>>>                Case (NavigateData.eNavigateType = nfFromMain)
-38811>>>                    Send NavigateForward of oZoomJugador Self
-38812>>>                    Case Break
-38813>>>                Case Else // must be nfUndefined
-38813>>>                    Send NavigateForward of oZoomJugador Self
-38814>>>            Case End
-38814>>>        End_Procedure
-38815>>>
-38815>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-38818>>>            Move True to NavigateData.bReadOnly
-38819>>>        End_Procedure
-38820>>>
-38820>>>    End_Object 
-38821>>>
-38821>>>    Object oActionGroup is a cWebMenuGroup
+38746>>>    Object oliga_DD is a cligaDataDictionary
+38748>>>    End_Object 
+38749>>>
+38749>>>    Object oequipo_DD is a cequipoDataDictionary
+38751>>>        Set DDO_Server to oliga_DD
+38752>>>    End_Object 
+38753>>>
+38753>>>    Object ojugador_DD is a cjugadorDataDictionary
+38755>>>        Set DDO_Server to oequipo_DD
+38756>>>    End_Object 
+38757>>>
+38757>>>    Set Main_DD to ojugador_DD
+38758>>>    Set Server  to ojugador_DD
+38759>>>
+38759>>>    Object oList is a cWebList
+38761>>>        Set piColumnSpan to 0
+38762>>>        Set psCSSClass to "MobileList"
+38763>>>        Set pbServerOnRowClick to True
+38764>>>        Set pbFillHeight to True
+38765>>>        Set pbShowHeader to True
+38766>>>        Set piSortColumn to 0
+38767>>>
+38767>>>        Object ojugadorNombre is a cWebColumn
+38769>>>            Entry_Item jugador.Nombre
+38770>>>            Set psCaption to "Nombre"
+38771>>>            Set piWidth to 600
+38772>>>        End_Object 
+38773>>>
+38773>>>        Object ojugadorApellido is a cWebColumn
+38775>>>            Entry_Item jugador.Apellido
+38776>>>            Set psCaption to "Apellido"
+38777>>>            Set piWidth to 600
+38778>>>        End_Object 
+38779>>>
+38779>>>        Object ojugadorNacionalidad is a cWebColumn
+38781>>>            Entry_Item jugador.Nacionalidad
+38782>>>            Set psCaption to "Nacionalidad"
+38783>>>            Set piWidth to 500
+38784>>>        End_Object 
+38785>>>
+38785>>>        Object oequipoNombre is a cWebColumn
+38787>>>            Entry_Item equipo.Nombre
+38788>>>            Set psCaption to "Equipo"
+38789>>>            Set piWidth to 600
+38790>>>        End_Object 
+38791>>>
+38791>>>        Object oDetailButton is a cWebColumnButton
+38793>>>            Set psCaption to "Info"
+38794>>>            Set piWidth to 45
+38795>>>            Set pbFixedWidth to True
+38796>>>            Set pbResizable to False
+38797>>>            Set piListRowSpan to 1
+38798>>>            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+38799>>>            Set peAlign to alignRight
+38800>>>            WebRegisterPath ntNavigateForward oZoomJugador
+38806>>>            Procedure OnClick
+38809>>>                Send NavigatePath
+38810>>>            End_Procedure
+38811>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+38814>>>                Move True to NavigateData.bReadOnly
+38815>>>            End_Procedure
+38816>>>        End_Object 
+38817>>>
+38817>>>        WebRegisterPath ntNavigateForward oZoomJugador
 38823>>>
-38823>>>        Object oSearch is a cWebMenuItem
-38825>>>            Set psCSSClass to "WebPromptMenuItem"
-38826>>>            Set psCaption to "Search"
-38827>>>            Procedure OnClick
-38830>>>                Send Search of oList
-38831>>>            End_Procedure
-38832>>>        End_Object 
-38833>>>
-38833>>>        Object oNewButton is a cWebMenuItem
-38835>>>            Set psCSSClass to "WebClearMenuItem"
-38836>>>            Set psCaption to "New"
-38837>>>            WebRegisterPath ntNavigateForward oZoomJugador
-38843>>>            Procedure OnClick
-38846>>>                Send NavigatePath
-38847>>>            End_Procedure
-38848>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-38851>>>                Move True to NavigateData.bNewRecord
-38852>>>            End_Procedure
-38853>>>        End_Object 
-38854>>>
-38854>>>    End_Object 
-38855>>>
-38855>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-38858>>>        WebSet pbRender of oNewButton to True
-38859>>>        WebSet pbRender of oDetailButton to True
-38860>>>        Case Begin
-38860>>>            Case (NavigateData.eNavigateType = nfFromParent)
-38862>>>                Case Break
-38863>>>            Case (NavigateData.eNavigateType = nfFromChild)
-38866>>>                Case Break
-38867>>>            Case (NavigateData.eNavigateType = nfFromMain)
-38870>>>                WebSet pbRender of oDetailButton to False
-38871>>>                Case Break
-38872>>>            Case Else
-38872>>>        Case End
-38872>>>    End_Procedure
-38873>>>
-38873>>>End_Object
-38874>    Use ZoomEntrenador.wo
+38823>>>        Procedure OnRowClick String sRowId
+38826>>>            tWebNavigateData NavigateData
+38826>>>            tWebNavigateData NavigateData
+38826>>>            Get GetNavigateData to NavigateData
+38827>>>            Case Begin
+38827>>>                Case (NavigateData.eNavigateType = nfFromParent)
+38829>>>                    // From parent - pendiente hasta ver data dictionaries
+38829>>>                    Case Break
+38830>>>                Case (NavigateData.eNavigateType = nfFromChild)
+38833>>>                    Send NavigateClose Self
+38834>>>                    Case Break
+38835>>>                Case (NavigateData.eNavigateType = nfFromMain)
+38838>>>                    Send NavigateForward of oZoomJugador Self
+38839>>>                    Case Break
+38840>>>                Case Else // must be nfUndefined
+38840>>>                    Send NavigateForward of oZoomJugador Self
+38841>>>            Case End
+38841>>>        End_Procedure
+38842>>>
+38842>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+38845>>>            Move True to NavigateData.bReadOnly
+38846>>>        End_Procedure
+38847>>>
+38847>>>    End_Object 
+38848>>>
+38848>>>    Object oActionGroup is a cWebMenuGroup
+38850>>>
+38850>>>        Object oSearch is a cWebMenuItem
+38852>>>            Set psCSSClass to "WebPromptMenuItem"
+38853>>>            Set psCaption to "Search"
+38854>>>            Procedure OnClick
+38857>>>                Send Search of oList
+38858>>>            End_Procedure
+38859>>>        End_Object 
+38860>>>
+38860>>>        Object oNewButton is a cWebMenuItem
+38862>>>            Set psCSSClass to "WebClearMenuItem"
+38863>>>            Set psCaption to "New"
+38864>>>            WebRegisterPath ntNavigateForward oZoomJugador
+38870>>>            Procedure OnClick
+38873>>>                Send NavigatePath
+38874>>>            End_Procedure
+38875>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+38878>>>                Move True to NavigateData.bNewRecord
+38879>>>            End_Procedure
+38880>>>        End_Object 
+38881>>>
+38881>>>    End_Object 
+38882>>>
+38882>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+38885>>>        WebSet pbRender of oNewButton to True
+38886>>>        WebSet pbRender of oDetailButton to True
+38887>>>        Case Begin
+38887>>>            Case (NavigateData.eNavigateType = nfFromParent)
+38889>>>                Case Break
+38890>>>            Case (NavigateData.eNavigateType = nfFromChild)
+38893>>>                Case Break
+38894>>>            Case (NavigateData.eNavigateType = nfFromMain)
+38897>>>                WebSet pbRender of oDetailButton to False
+38898>>>                Case Break
+38899>>>            Case Else
+38899>>>        Case End
+38899>>>    End_Procedure
+38900>>>
+38900>>>End_Object
+38901>    Use ZoomEntrenador.wo
 Including file: ZoomEntrenador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\ZoomEntrenador.wo)
-38874>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\ZoomEntrenador.wo
-38874>>>// ZoomEntrenador
-38874>>>//
-38874>>>Use cWebView.pkg
-38874>>>Use cWebPanel.pkg
-38874>>>Use cWebMenuGroup.pkg
-38874>>>Use cWebMenuItem.pkg
-38874>>>Use cWebForm.pkg
-38874>>>Use SelectEquipo.wo
-38874>>>Use SelectLiga.wo
-38874>>>Use cligaDataDictionary.dd
-38874>>>Use cequipoDataDictionary.dd
-38874>>>Use centrenadorDataDictionary.dd
+38901>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\ZoomEntrenador.wo
+38901>>>// ZoomEntrenador
+38901>>>//
+38901>>>Use cWebView.pkg
+38901>>>Use cWebPanel.pkg
+38901>>>Use cWebMenuGroup.pkg
+38901>>>Use cWebMenuItem.pkg
+38901>>>Use cWebForm.pkg
+38901>>>Use SelectEquipo.wo
+38901>>>Use SelectLiga.wo
+38901>>>Use cligaDataDictionary.dd
+38901>>>Use cequipoDataDictionary.dd
+38901>>>Use centrenadorDataDictionary.dd
 Including file: centrenadorDataDictionary.dd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\centrenadorDataDictionary.dd)
-38874>>>>>Use DataDict.pkg
-38874>>>>>
-38874>>>>>Open entrenador
-38876>>>>>Open hijoentrenador
+38901>>>>>Use DataDict.pkg
+38901>>>>>
+38901>>>>>Open entrenador
+38903>>>>>Open hijoentrenador
 Including file: hijoentrenador.fd    (C:\DataFlex Projects\FutbolWebApp\DDSrc\hijoentrenador.fd)
-38878>>>>>Open equipo
-38880>>>>>
-38880>>>>>Class centrenadorDataDictionary is a DataDictionary
-38881>>>>>
-38881>>>>>    Procedure Construct_Object
-38883>>>>>        Forward Send Construct_Object
-38885>>>>>        Set Main_File to entrenador.File_Number
-38886>>>>>
-38886>>>>>        Set Add_Server_File to equipo.File_Number
-38887>>>>>        Set ParentNullAllowed equipo.File_Number to True
-38888>>>>>
-38888>>>>>        Set Add_Client_File to hijoentrenador.File_Number
-38889>>>>>
-38889>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-38890>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
-38891>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
-38892>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
-38893>>>>>
-38893>>>>>        Set Key_Field_State Field entrenador.ID to True
-38894>>>>>
-38894>>>>>        Set Field_Option Field entrenador.Nombre DD_REQUIRED to True
-38895>>>>>
-38895>>>>>    End_Procedure
-38896>>>>>
-38896>>>>>    Procedure Attach_Main_File
-38898>>>>>        Forward Send Attach_Main_File
-38900>>>>>        If (entrenador.EquipoID = 0) Begin
-38902>>>>>            Set_Attribute DF_FIELD_IS_NULL of entrenador.File_Number (RefTable(entrenador.EquipoID)) to True
-38905>>>>>        End
-38905>>>>>>
-38905>>>>>    End_Procedure
-38906>>>>>
-38906>>>>>End_Class
-38907>>>
-38907>>>Object oZoomEntrenador is a cWebView
-38909>>>    Set piColumnCount to 12
-38910>>>    Set psCaption to "ZoomEntrenador"
-38911>>>    Set peWebViewStyle to wvsDrilldown
-38912>>>    Set peViewType to vtZoom
-38913>>>    Set pbShowCaption to False
-38914>>>    Set psCSSClass to "ZoomEntrenador"
-38915>>>    Set Verify_Save_Msg to 0
-38916>>>    Set piMaxWidth to 1024
-38917>>>
-38917>>>    Object oliga_DD is a cligaDataDictionary
-38919>>>    End_Object
-38920>>>
-38920>>>    Object oequipo_DD is a cequipoDataDictionary
-38922>>>        Set DDO_Server to oliga_DD
-38923>>>    End_Object
-38924>>>
-38924>>>    Object oentrenador_DD is a centrenadorDataDictionary
-38926>>>        Set DDO_Server to oequipo_DD
-38927>>>    End_Object
-38928>>>
-38928>>>    Set Main_DD to oentrenador_DD
-38929>>>    Set Server  to oentrenador_DD
-38930>>>
-38930>>>    Object oWebMainPanel is a cWebPanel
-38932>>>        Set piColumnCount to 12
-38933>>>        WebSetResponsive piColumnCount rmMobile to 4
+38905>>>>>Open equipo
+38907>>>>>
+38907>>>>>Class centrenadorDataDictionary is a DataDictionary
+38908>>>>>
+38908>>>>>    Procedure Construct_Object
+38910>>>>>        Forward Send Construct_Object
+38912>>>>>        Set Main_File to entrenador.File_Number
+38913>>>>>
+38913>>>>>        Set Add_Server_File to equipo.File_Number
+38914>>>>>        Set ParentNullAllowed equipo.File_Number to True
+38915>>>>>
+38915>>>>>        Set Add_Client_File to hijoentrenador.File_Number
+38916>>>>>
+38916>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+38917>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+38918>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+38919>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+38920>>>>>
+38920>>>>>        Set Key_Field_State Field entrenador.ID to True
+38921>>>>>
+38921>>>>>        Set Field_Option Field entrenador.Nombre DD_REQUIRED to True
+38922>>>>>
+38922>>>>>    End_Procedure
+38923>>>>>
+38923>>>>>    Procedure Attach_Main_File
+38925>>>>>        Forward Send Attach_Main_File
+38927>>>>>        If (entrenador.EquipoID = 0) Begin
+38929>>>>>            Set_Attribute DF_FIELD_IS_NULL of entrenador.File_Number (RefTable(entrenador.EquipoID)) to True
+38932>>>>>        End
+38932>>>>>>
+38932>>>>>    End_Procedure
+38933>>>>>
+38933>>>>>End_Class
 38934>>>
-38934>>>        Object oentrenadorID is a cWebForm
-38936>>>            Entry_Item entrenador.ID
-38937>>>            Set piColumnSpan to 2
-38938>>>            Set piColumnIndex to 0
-38939>>>            Set peLabelPosition to lpTop
-38940>>>            Set psLabel to "ID"
-38941>>>        End_Object
-38942>>>
-38942>>>        Object oentrenadorNombre is a cWebForm
-38944>>>            Entry_Item entrenador.Nombre
-38945>>>            Set piColumnSpan to 3
-38946>>>            Set piColumnIndex to 2
-38947>>>            Set peLabelPosition to lpTop
-38948>>>            Set psLabel to "Nombre"
-38949>>>        End_Object
-38950>>>
-38950>>>        Object oentrenadorApellido is a cWebForm
-38952>>>            Entry_Item entrenador.Apellido
-38953>>>            Set piColumnSpan to 5
-38954>>>            Set piColumnIndex to 5
-38955>>>            Set peLabelPosition to lpTop
-38956>>>            Set psLabel to "Apellido"
-38957>>>        End_Object
-38958>>>
-38958>>>        Object oentrenadorNacionalidad is a cWebForm
-38960>>>            Entry_Item entrenador.Nacionalidad
-38961>>>            Set piColumnSpan to 3
-38962>>>            Set piColumnIndex to 0
-38963>>>            Set peLabelPosition to lpTop
-38964>>>            Set psLabel to "Nacionalidad"
-38965>>>        End_Object
-38966>>>
-38966>>>        Object oequipoID is a cWebForm
-38968>>>            Entry_Item equipo.ID
-38969>>>            Set piColumnSpan to 2
-38970>>>            Set piColumnIndex to 0
-38971>>>            Set peLabelPosition to lpTop
-38972>>>            Set psLabel to "Equipo ID"
-38973>>>            Set pbPromptButton to True
-38974>>>            WebRegisterPath ntNavigateForward oSelectEquipo
-38980>>>            Procedure OnPrompt
-38983>>>                Send NavigatePath
-38984>>>            End_Procedure
-38985>>>        End_Object
-38986>>>
-38986>>>        Object oequipoNombre is a cWebForm
-38988>>>            Entry_Item equipo.Nombre
-38989>>>            Set piColumnSpan to 6
-38990>>>            Set piColumnIndex to 2
-38991>>>            Set peLabelPosition to lpTop
-38992>>>            Set psLabel to "Equipo"
-38993>>>        End_Object
-38994>>>
-38994>>>        Object oligaNombre is a cWebForm
-38996>>>            Entry_Item liga.Nombre
-38997>>>            Set piColumnSpan to 4
-38998>>>            Set piColumnIndex to 8
-38999>>>            Set peLabelPosition to lpTop
-39000>>>            Set psLabel to "Liga"
-39001>>>        End_Object
-39002>>>
-39002>>>    End_Object
-39003>>>
-39003>>>    Object oActionGroup is a cWebMenuGroup
-39005>>>
-39005>>>        Object oSaveBtn is a cWebMenuItem
-39007>>>            Set psCSSClass to "WebSaveMenuItem"
-39008>>>            Set psCaption to "Save"
-39009>>>            Procedure OnClick
-39012>>>                Send ShowInfoBox "Objecto que genera la vuelta, button save" "Estoy en Madrid todavía pero me vuelvo a Málaga"
-39013>>>                Send Request_Save
-39014>>>            End_Procedure
-39015>>>        End_Object
-39016>>>
-39016>>>        Object oEditBtn is a cWebMenuItem
-39018>>>            Set psCSSClass to "WebEditMenuItem"
-39019>>>            Set psCaption to "Edit"
-39020>>>            Procedure OnClick
-39023>>>                Send ChangeEditMode True
-39024>>>                Send SetActionButtons
-39025>>>            End_Procedure
-39026>>>        End_Object
-39027>>>
-39027>>>        Object oDeleteBtn is a cWebMenuItem
-39029>>>            Set psCSSClass to "WebDeleteMenuItem"
-39030>>>            Set psCaption to "Delete"
-39031>>>            Set peActionDisplay to adMenu
-39032>>>            Procedure OnClick
-39035>>>                Send Request_Delete
-39036>>>            End_Procedure
-39037>>>        End_Object
-39038>>>
-39038>>>        Object oCancelChangesBtn is a cWebMenuItem
-39040>>>            Set psCSSClass to "WebIcon_Refresh"
-39041>>>            Set psCaption to "Clear Changes"
-39042>>>            Set peActionDisplay to adMenu
-39043>>>            Procedure OnClick
-39046>>>                Send RefreshRecord
-39047>>>            End_Procedure
-39048>>>        End_Object
-39049>>>
-39049>>>        Object oDespedirBtn is a cWebMenuItem
-39051>>>            Set psCSSClass to "WebDeleteMenuItem"
-39052>>>            Set psCaption to "Despedir"
-39053>>>            Set peActionDisplay to adMenu
-39054>>>            Procedure OnClick
-39057>>>                Send Clear of oequipo_DD
-39058>>>            End_Procedure
-39059>>>        End_Object
-39060>>>
-39060>>>    End_Object
-39061>>>
-39061>>>    Procedure SetActionButtons
-39064>>>        tWebNavigateData NavigateData
-39064>>>        tWebNavigateData NavigateData
-39064>>>        Boolean bHasRecord
-39064>>>        Handle hoDD
-39064>>>        Get Server to hoDD
-39065>>>        Get GetNavigateData to NavigateData
-39066>>>        Get HasRecord of hoDD to bHasRecord
-39067>>>        WebSet pbRender of oEditBtn to False
-39068>>>        WebSet pbRender of oSaveBtn to False
-39069>>>        WebSet pbRender of oCancelChangesBtn to False
-39070>>>        WebSet pbRender of oDeleteBtn to False
-39071>>>        WebSet pbRender of oDespedirBtn to False
-39072>>>        If (NavigateData.bReadOnly) Begin
-39074>>>            WebSet pbRender of oEditBtn to True
-39075>>>        End
-39075>>>>
-39075>>>        Else Begin
-39076>>>            WebSet pbRender of oSaveBtn to True
-39077>>>            WebSet pbRender of oCancelChangesBtn to True
-39078>>>            WebSet pbRender of oDeleteBtn to bHasRecord
-39079>>>            WebSet pbRender of oDespedirBtn to True
-39080>>>        End
-39080>>>>
-39080>>>    End_Procedure
-39081>>>
-39081>>>    Procedure OnViewSaved Handle hoServer Boolean bChanged
-39084>>>        Send NavigateClose Self
-39085>>>    End_Procedure
-39086>>>
-39086>>>    Procedure OnViewDeleted Handle hoDDO
-39089>>>        Send NavigateClose Self
-39090>>>    End_Procedure
-39091>>>
-39091>>>    Procedure OnBeforeShow
-39094>>>        Send ShowInfoBox "He llegado a Madrid" "OnBeforeShow - ZoomEntrenador se muestra"
-39095>>>    End_Procedure
-39096>>>
-39096>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-39099>>>        Case Begin
-39099>>>            Case (NavigateData.eNavigateType = nfFromMain)
-39101>>>                Send ShowInfoBox "Vista invocada" "He llegado a Madrid desde Málaga"
-39102>>>                Case Break
-39103>>>            Case (NavigateData.eNavigateType = nfFromParent)
-39106>>>                Case Break
-39107>>>            Case (NavigateData.eNavigateType = nfFromChild)
-39110>>>                Case Break
-39111>>>            Case Else
-39111>>>        Case End
-39111>>>        Send SetActionButtons
+38934>>>Object oZoomEntrenador is a cWebView
+38936>>>    Set piColumnCount to 12
+38937>>>    Set psCaption to "ZoomEntrenador"
+38938>>>    Set peWebViewStyle to wvsDrilldown
+38939>>>    Set peViewType to vtZoom
+38940>>>    Set pbShowCaption to False
+38941>>>    Set psCSSClass to "ZoomEntrenador"
+38942>>>    Set Verify_Save_Msg to 0
+38943>>>    Set piMaxWidth to 1024
+38944>>>
+38944>>>    Object oliga_DD is a cligaDataDictionary
+38946>>>    End_Object
+38947>>>
+38947>>>    Object oequipo_DD is a cequipoDataDictionary
+38949>>>        Set DDO_Server to oliga_DD
+38950>>>    End_Object
+38951>>>
+38951>>>    Object oentrenador_DD is a centrenadorDataDictionary
+38953>>>        Set DDO_Server to oequipo_DD
+38954>>>    End_Object
+38955>>>
+38955>>>    Set Main_DD to oentrenador_DD
+38956>>>    Set Server  to oentrenador_DD
+38957>>>
+38957>>>    Object oWebMainPanel is a cWebPanel
+38959>>>        Set piColumnCount to 12
+38960>>>        WebSetResponsive piColumnCount rmMobile to 4
+38961>>>
+38961>>>        Object oentrenadorID is a cWebForm
+38963>>>            Entry_Item entrenador.ID
+38964>>>            Set piColumnSpan to 2
+38965>>>            Set piColumnIndex to 0
+38966>>>            Set peLabelPosition to lpTop
+38967>>>            Set psLabel to "ID"
+38968>>>        End_Object
+38969>>>
+38969>>>        Object oentrenadorNombre is a cWebForm
+38971>>>            Entry_Item entrenador.Nombre
+38972>>>            Set piColumnSpan to 3
+38973>>>            Set piColumnIndex to 2
+38974>>>            Set peLabelPosition to lpTop
+38975>>>            Set psLabel to "Nombre"
+38976>>>        End_Object
+38977>>>
+38977>>>        Object oentrenadorApellido is a cWebForm
+38979>>>            Entry_Item entrenador.Apellido
+38980>>>            Set piColumnSpan to 5
+38981>>>            Set piColumnIndex to 5
+38982>>>            Set peLabelPosition to lpTop
+38983>>>            Set psLabel to "Apellido"
+38984>>>        End_Object
+38985>>>
+38985>>>        Object oentrenadorNacionalidad is a cWebForm
+38987>>>            Entry_Item entrenador.Nacionalidad
+38988>>>            Set piColumnSpan to 3
+38989>>>            Set piColumnIndex to 0
+38990>>>            Set peLabelPosition to lpTop
+38991>>>            Set psLabel to "Nacionalidad"
+38992>>>        End_Object
+38993>>>
+38993>>>        Object oequipoID is a cWebForm
+38995>>>            Entry_Item equipo.ID
+38996>>>            Set piColumnSpan to 2
+38997>>>            Set piColumnIndex to 0
+38998>>>            Set peLabelPosition to lpTop
+38999>>>            Set psLabel to "Equipo ID"
+39000>>>            Set pbPromptButton to True
+39001>>>            WebRegisterPath ntNavigateForward oSelectEquipo
+39007>>>            Procedure OnPrompt
+39010>>>                Send NavigatePath
+39011>>>            End_Procedure
+39012>>>        End_Object
+39013>>>
+39013>>>        Object oequipoNombre is a cWebForm
+39015>>>            Entry_Item equipo.Nombre
+39016>>>            Set piColumnSpan to 6
+39017>>>            Set piColumnIndex to 2
+39018>>>            Set peLabelPosition to lpTop
+39019>>>            Set psLabel to "Equipo"
+39020>>>        End_Object
+39021>>>
+39021>>>        Object oligaNombre is a cWebForm
+39023>>>            Entry_Item liga.Nombre
+39024>>>            Set piColumnSpan to 4
+39025>>>            Set piColumnIndex to 8
+39026>>>            Set peLabelPosition to lpTop
+39027>>>            Set psLabel to "Liga"
+39028>>>        End_Object
+39029>>>
+39029>>>    End_Object
+39030>>>
+39030>>>    Object oActionGroup is a cWebMenuGroup
+39032>>>
+39032>>>        Object oSaveBtn is a cWebMenuItem
+39034>>>            Set psCSSClass to "WebSaveMenuItem"
+39035>>>            Set psCaption to "Save"
+39036>>>            Procedure OnClick
+39039>>>                Send ShowInfoBox "Objecto que genera la vuelta, button save" "Estoy en Madrid todavía pero me vuelvo a Málaga"
+39040>>>                Send Request_Save
+39041>>>            End_Procedure
+39042>>>        End_Object
+39043>>>
+39043>>>        Object oEditBtn is a cWebMenuItem
+39045>>>            Set psCSSClass to "WebEditMenuItem"
+39046>>>            Set psCaption to "Edit"
+39047>>>            Procedure OnClick
+39050>>>                Send ChangeEditMode True
+39051>>>                Send SetActionButtons
+39052>>>            End_Procedure
+39053>>>        End_Object
+39054>>>
+39054>>>        Object oDeleteBtn is a cWebMenuItem
+39056>>>            Set psCSSClass to "WebDeleteMenuItem"
+39057>>>            Set psCaption to "Delete"
+39058>>>            Set peActionDisplay to adMenu
+39059>>>            Procedure OnClick
+39062>>>                Send Request_Delete
+39063>>>            End_Procedure
+39064>>>        End_Object
+39065>>>
+39065>>>        Object oCancelChangesBtn is a cWebMenuItem
+39067>>>            Set psCSSClass to "WebIcon_Refresh"
+39068>>>            Set psCaption to "Clear Changes"
+39069>>>            Set peActionDisplay to adMenu
+39070>>>            Procedure OnClick
+39073>>>                Send RefreshRecord
+39074>>>            End_Procedure
+39075>>>        End_Object
+39076>>>
+39076>>>        Object oDespedirBtn is a cWebMenuItem
+39078>>>            Set psCSSClass to "WebDeleteMenuItem"
+39079>>>            Set psCaption to "Despedir"
+39080>>>            Set peActionDisplay to adMenu
+39081>>>            Procedure OnClick
+39084>>>                Send Clear of oequipo_DD
+39085>>>            End_Procedure
+39086>>>        End_Object
+39087>>>
+39087>>>    End_Object
+39088>>>
+39088>>>    Procedure SetActionButtons
+39091>>>        tWebNavigateData NavigateData
+39091>>>        tWebNavigateData NavigateData
+39091>>>        Boolean bHasRecord
+39091>>>        Handle hoDD
+39091>>>        Get Server to hoDD
+39092>>>        Get GetNavigateData to NavigateData
+39093>>>        Get HasRecord of hoDD to bHasRecord
+39094>>>        WebSet pbRender of oEditBtn to False
+39095>>>        WebSet pbRender of oSaveBtn to False
+39096>>>        WebSet pbRender of oCancelChangesBtn to False
+39097>>>        WebSet pbRender of oDeleteBtn to False
+39098>>>        WebSet pbRender of oDespedirBtn to False
+39099>>>        If (NavigateData.bReadOnly) Begin
+39101>>>            WebSet pbRender of oEditBtn to True
+39102>>>        End
+39102>>>>
+39102>>>        Else Begin
+39103>>>            WebSet pbRender of oSaveBtn to True
+39104>>>            WebSet pbRender of oCancelChangesBtn to True
+39105>>>            WebSet pbRender of oDeleteBtn to bHasRecord
+39106>>>            WebSet pbRender of oDespedirBtn to True
+39107>>>        End
+39107>>>>
+39107>>>    End_Procedure
+39108>>>
+39108>>>    Procedure OnViewSaved Handle hoServer Boolean bChanged
+39111>>>        Send NavigateClose Self
 39112>>>    End_Procedure
 39113>>>
-39113>>>End_Object
-39114>    Use SelectEntrenador.wo
+39113>>>    Procedure OnViewDeleted Handle hoDDO
+39116>>>        Send NavigateClose Self
+39117>>>    End_Procedure
+39118>>>
+39118>>>    Procedure OnBeforeShow
+39121>>>        Send ShowInfoBox "He llegado a Madrid" "OnBeforeShow - ZoomEntrenador se muestra"
+39122>>>    End_Procedure
+39123>>>
+39123>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+39126>>>        Case Begin
+39126>>>            Case (NavigateData.eNavigateType = nfFromMain)
+39128>>>                Send ShowInfoBox "Vista invocada" "He llegado a Madrid desde Málaga"
+39129>>>                Case Break
+39130>>>            Case (NavigateData.eNavigateType = nfFromParent)
+39133>>>                Case Break
+39134>>>            Case (NavigateData.eNavigateType = nfFromChild)
+39137>>>                Case Break
+39138>>>            Case Else
+39138>>>        Case End
+39138>>>        Send SetActionButtons
+39139>>>    End_Procedure
+39140>>>
+39140>>>End_Object
+39141>    Use SelectEntrenador.wo
 Including file: SelectEntrenador.wo    (C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectEntrenador.wo)
-39114>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectEntrenador.wo
-39114>>>// SelectEntrenador
-39114>>>//
-39114>>>Use cWebView.pkg
-39114>>>Use cWebList.pkg
-39114>>>Use cWebMenuGroup.pkg
-39114>>>Use cWebMenuItem.pkg
-39114>>>Use cWebColumnButton.pkg
-39114>>>Use cWebColumn.pkg
-39114>>>Use ZoomEntrenador.wo
-39114>>>Use cligaDataDictionary.dd
-39114>>>Use cequipoDataDictionary.dd
-39114>>>Use centrenadorDataDictionary.dd
-39114>>>
-39114>>>Object oSelectEntrenador is a cWebView
-39116>>>    Set psCaption to "SelectEntrenador"
-39117>>>    Set peWebViewStyle to wvsDrilldown
-39118>>>    Set peViewType to vtSelect
-39119>>>    Set piColumnCount to 12
-39120>>>    Set pbShowCaption to False
-39121>>>    Set piMaxWidth to 1024
-39122>>>
-39122>>>    Object oliga_DD is a cligaDataDictionary
-39124>>>    End_Object
-39125>>>
-39125>>>    Object oequipo_DD is a cequipoDataDictionary
-39127>>>        Set DDO_Server to oliga_DD
-39128>>>    End_Object
-39129>>>
-39129>>>    Object oentrenador_DD is a centrenadorDataDictionary
-39131>>>        Set DDO_Server to oequipo_DD
-39132>>>    End_Object
-39133>>>
-39133>>>    Set Main_DD to oentrenador_DD
-39134>>>    Set Server  to oentrenador_DD
-39135>>>
-39135>>>    Object oList is a cWebList
-39137>>>        Set piColumnSpan to 0
-39138>>>        Set psCSSClass to "MobileList"
-39139>>>        Set pbServerOnRowClick to True
-39140>>>        Set pbFillHeight to True
-39141>>>        Set pbShowHeader to True
-39142>>>        Set piSortColumn to 0
-39143>>>
-39143>>>        Object oentrenadorNombre is a cWebColumn
-39145>>>            Entry_Item entrenador.Nombre
-39146>>>            Set psCaption to "Nombre"
-39147>>>            Set piWidth to 600
-39148>>>        End_Object
+39141>>>// C:\DataFlex Projects\FutbolWebApp\AppSrc\SelectEntrenador.wo
+39141>>>// SelectEntrenador
+39141>>>//
+39141>>>Use cWebView.pkg
+39141>>>Use cWebList.pkg
+39141>>>Use cWebMenuGroup.pkg
+39141>>>Use cWebMenuItem.pkg
+39141>>>Use cWebColumnButton.pkg
+39141>>>Use cWebColumn.pkg
+39141>>>Use ZoomEntrenador.wo
+39141>>>Use cligaDataDictionary.dd
+39141>>>Use cequipoDataDictionary.dd
+39141>>>Use centrenadorDataDictionary.dd
+39141>>>
+39141>>>Object oSelectEntrenador is a cWebView
+39143>>>    Set psCaption to "SelectEntrenador"
+39144>>>    Set peWebViewStyle to wvsDrilldown
+39145>>>    Set peViewType to vtSelect
+39146>>>    Set piColumnCount to 12
+39147>>>    Set pbShowCaption to False
+39148>>>    Set piMaxWidth to 1024
 39149>>>
-39149>>>        Object oentrenadorApellido is a cWebColumn
-39151>>>            Entry_Item entrenador.Apellido
-39152>>>            Set psCaption to "Apellido"
-39153>>>            Set piWidth to 600
-39154>>>        End_Object
-39155>>>
-39155>>>        Object oentrenadorNacionalidad is a cWebColumn
-39157>>>            Entry_Item entrenador.Nacionalidad
-39158>>>            Set psCaption to "Nacionalidad"
-39159>>>            Set piWidth to 500
-39160>>>        End_Object
-39161>>>
-39161>>>        Object oequipoNombre is a cWebColumn
-39163>>>            Entry_Item equipo.Nombre
-39164>>>            Set psCaption to "Equipo"
-39165>>>            Set piWidth to 600
-39166>>>        End_Object
-39167>>>
-39167>>>        Object oDetailButton is a cWebColumnButton
-39169>>>            Set psCaption to "btn"
-39170>>>            Set piWidth to 45
-39171>>>            Set pbFixedWidth to True
-39172>>>            Set pbResizable to False
-39173>>>            Set piListRowSpan to 1
-39174>>>            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
-39175>>>            Set peAlign to alignRight
-39176>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
-39182>>>            Procedure OnClick
-39185>>>                Send NavigatePath
-39186>>>            End_Procedure
-39187>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39190>>>                Move True to NavigateData.bReadOnly
-39191>>>                Send ShowInfoBox "DetailButton" "objeto q provoca la navegación"
-39192>>>            End_Procedure
-39193>>>            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
-39196>>>                Forward Send OnNavigateBack hoCallback NavigateData
-39198>>>                Send ShowInfoBox "Ya estoy en Málaga" "Entro en Málaga desde Madrid por el objeto q lo inició todo, cierro el ciclo"
-39199>>>            End_Procedure
-39200>>>        End_Object
-39201>>>
-39201>>>        WebRegisterPath ntNavigateForward oZoomEntrenador
-39207>>>
-39207>>>        Procedure OnRowClick String sRowId
-39210>>>            tWebNavigateData NavigateData
-39210>>>            tWebNavigateData NavigateData
-39210>>>            Get GetNavigateData to NavigateData
-39211>>>            Case Begin
-39211>>>                Case (NavigateData.eNavigateType = nfFromParent)
-39213>>>                    Case Break
-39214>>>                Case (NavigateData.eNavigateType = nfFromChild)
-39217>>>                    Send NavigateClose Self
-39218>>>                    Case Break
-39219>>>                Case (NavigateData.eNavigateType = nfFromMain)
-39222>>>                    Send NavigateForward of oZoomEntrenador Self
-39223>>>                    Case Break
-39224>>>                Case Else
-39224>>>                    Send NavigateForward of oZoomEntrenador Self
-39225>>>            Case End
-39225>>>        End_Procedure
-39226>>>
-39226>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39229>>>            Move True to NavigateData.bReadOnly
-39230>>>        End_Procedure
-39231>>>
-39231>>>    End_Object
-39232>>>
-39232>>>    Object oActionGroup is a cWebMenuGroup
+39149>>>    Object oliga_DD is a cligaDataDictionary
+39151>>>    End_Object
+39152>>>
+39152>>>    Object oequipo_DD is a cequipoDataDictionary
+39154>>>        Set DDO_Server to oliga_DD
+39155>>>    End_Object
+39156>>>
+39156>>>    Object oentrenador_DD is a centrenadorDataDictionary
+39158>>>        Set DDO_Server to oequipo_DD
+39159>>>    End_Object
+39160>>>
+39160>>>    Set Main_DD to oentrenador_DD
+39161>>>    Set Server  to oentrenador_DD
+39162>>>
+39162>>>    Object oList is a cWebList
+39164>>>        Set piColumnSpan to 0
+39165>>>        Set psCSSClass to "MobileList"
+39166>>>        Set pbServerOnRowClick to True
+39167>>>        Set pbFillHeight to True
+39168>>>        Set pbShowHeader to True
+39169>>>        Set piSortColumn to 0
+39170>>>
+39170>>>        Object oentrenadorNombre is a cWebColumn
+39172>>>            Entry_Item entrenador.Nombre
+39173>>>            Set psCaption to "Nombre"
+39174>>>            Set piWidth to 600
+39175>>>        End_Object
+39176>>>
+39176>>>        Object oentrenadorApellido is a cWebColumn
+39178>>>            Entry_Item entrenador.Apellido
+39179>>>            Set psCaption to "Apellido"
+39180>>>            Set piWidth to 600
+39181>>>        End_Object
+39182>>>
+39182>>>        Object oentrenadorNacionalidad is a cWebColumn
+39184>>>            Entry_Item entrenador.Nacionalidad
+39185>>>            Set psCaption to "Nacionalidad"
+39186>>>            Set piWidth to 500
+39187>>>        End_Object
+39188>>>
+39188>>>        Object oequipoNombre is a cWebColumn
+39190>>>            Entry_Item equipo.Nombre
+39191>>>            Set psCaption to "Equipo"
+39192>>>            Set piWidth to 600
+39193>>>        End_Object
+39194>>>
+39194>>>        Object oDetailButton is a cWebColumnButton
+39196>>>            Set psCaption to "btn"
+39197>>>            Set piWidth to 45
+39198>>>            Set pbFixedWidth to True
+39199>>>            Set pbResizable to False
+39200>>>            Set piListRowSpan to 1
+39201>>>            Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+39202>>>            Set peAlign to alignRight
+39203>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
+39209>>>            Procedure OnClick
+39212>>>                Send NavigatePath
+39213>>>            End_Procedure
+39214>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39217>>>                Move True to NavigateData.bReadOnly
+39218>>>                Send ShowInfoBox "DetailButton" "objeto q provoca la navegación"
+39219>>>            End_Procedure
+39220>>>            Procedure OnNavigateBack Handle hoCallback tWebNavigateData NavigateData
+39223>>>                Forward Send OnNavigateBack hoCallback NavigateData
+39225>>>                Send ShowInfoBox "Ya estoy en Málaga" "Entro en Málaga desde Madrid por el objeto q lo inició todo, cierro el ciclo"
+39226>>>            End_Procedure
+39227>>>        End_Object
+39228>>>
+39228>>>        WebRegisterPath ntNavigateForward oZoomEntrenador
 39234>>>
-39234>>>        Object oSearch is a cWebMenuItem
-39236>>>            Set psCSSClass to "WebPromptMenuItem"
-39237>>>            Set psCaption to "Search"
-39238>>>            Procedure OnClick
-39241>>>                Send Search of oList
-39242>>>            End_Procedure
-39243>>>        End_Object
-39244>>>
-39244>>>        Object oNewButton is a cWebMenuItem
-39246>>>            Set psCSSClass to "WebClearMenuItem"
-39247>>>            Set psCaption to "New"
-39248>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
-39254>>>            Procedure OnClick
-39257>>>                Send NavigatePath
-39258>>>            End_Procedure
-39259>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
-39262>>>                Move True to NavigateData.bNewRecord
-39263>>>            End_Procedure
-39264>>>        End_Object
-39265>>>
-39265>>>    End_Object
-39266>>>
-39266>>>    Procedure OnBeforeShow
-39269>>>        Send ShowInfoBox "Ya estoy en Málaga" "OnBeforeShow - SelectEntrenador se muestra, navegación hacia adelante o vuelta"
-39270>>>    End_Procedure
+39234>>>        Procedure OnRowClick String sRowId
+39237>>>            tWebNavigateData NavigateData
+39237>>>            tWebNavigateData NavigateData
+39237>>>            Get GetNavigateData to NavigateData
+39238>>>            Case Begin
+39238>>>                Case (NavigateData.eNavigateType = nfFromParent)
+39240>>>                    Case Break
+39241>>>                Case (NavigateData.eNavigateType = nfFromChild)
+39244>>>                    Send NavigateClose Self
+39245>>>                    Case Break
+39246>>>                Case (NavigateData.eNavigateType = nfFromMain)
+39249>>>                    Send NavigateForward of oZoomEntrenador Self
+39250>>>                    Case Break
+39251>>>                Case Else
+39251>>>                    Send NavigateForward of oZoomEntrenador Self
+39252>>>            Case End
+39252>>>        End_Procedure
+39253>>>
+39253>>>        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39256>>>            Move True to NavigateData.bReadOnly
+39257>>>        End_Procedure
+39258>>>
+39258>>>    End_Object
+39259>>>
+39259>>>    Object oActionGroup is a cWebMenuGroup
+39261>>>
+39261>>>        Object oSearch is a cWebMenuItem
+39263>>>            Set psCSSClass to "WebPromptMenuItem"
+39264>>>            Set psCaption to "Search"
+39265>>>            Procedure OnClick
+39268>>>                Send Search of oList
+39269>>>            End_Procedure
+39270>>>        End_Object
 39271>>>
-39271>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-39274>>>        WebSet pbRender of oNewButton to True
-39275>>>        WebSet pbRender of oDetailButton to True
-39276>>>        Case Begin
-39276>>>            Case (NavigateData.eNavigateType = nfFromParent)
-39278>>>                Case Break
-39279>>>            Case (NavigateData.eNavigateType = nfFromChild)
-39282>>>                Case Break
-39283>>>            Case (NavigateData.eNavigateType = nfFromMain)
-39286>>>                WebSet pbRender of oDetailButton to False
-39287>>>                Case Break
-39288>>>            Case Else
-39288>>>        Case End
-39288>>>    End_Procedure
-39289>>>
-39289>>>End_Object
-39290>    Set phoDefaultView to oDashboard
-39291>
-39291>End_Object
-39292>
-39292>Send StartWebApp of oWebApp
-39293>
+39271>>>        Object oNewButton is a cWebMenuItem
+39273>>>            Set psCSSClass to "WebClearMenuItem"
+39274>>>            Set psCaption to "New"
+39275>>>            WebRegisterPath ntNavigateForward oZoomEntrenador
+39281>>>            Procedure OnClick
+39284>>>                Send NavigatePath
+39285>>>            End_Procedure
+39286>>>            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+39289>>>                Move True to NavigateData.bNewRecord
+39290>>>            End_Procedure
+39291>>>        End_Object
+39292>>>
+39292>>>    End_Object
+39293>>>
+39293>>>    Procedure OnBeforeShow
+39296>>>        Send ShowInfoBox "Ya estoy en Málaga" "OnBeforeShow - SelectEntrenador se muestra, navegación hacia adelante o vuelta"
+39297>>>    End_Procedure
+39298>>>
+39298>>>    Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
+39301>>>        WebSet pbRender of oNewButton to True
+39302>>>        WebSet pbRender of oDetailButton to True
+39303>>>        Case Begin
+39303>>>            Case (NavigateData.eNavigateType = nfFromParent)
+39305>>>                Case Break
+39306>>>            Case (NavigateData.eNavigateType = nfFromChild)
+39309>>>                Case Break
+39310>>>            Case (NavigateData.eNavigateType = nfFromMain)
+39313>>>                WebSet pbRender of oDetailButton to False
+39314>>>                Case Break
+39315>>>            Case Else
+39315>>>        Case End
+39315>>>    End_Procedure
+39316>>>
+39316>>>End_Object
+39317>    Set phoDefaultView to oDashboard
+39318>
+39318>End_Object
+39319>
+39319>Send StartWebApp of oWebApp
+39320>
 Summary
-Memory Available: 39963848704
+Memory Available: 39742337024
 Total Warnings : 0
 Total Errors   : 0
-Total Symbols  : 25665
+Total Symbols  : 25671
 Total Resources: 0
-Total Commands : 39292
+Total Commands : 39319
 Total Windows  : 0
 Total Pages    : 0
-Static Data    : 486973
-Message area   : 264941
-Total Blocks   : 17430
+Static Data    : 487441
+Message area   : 265220
+Total Blocks   : 17442
