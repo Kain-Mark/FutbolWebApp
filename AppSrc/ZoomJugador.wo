@@ -6,9 +6,8 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebCombo.pkg
 Use SelectEquipo.wo
-Use SelectLiga.wo
-Use SelectPosicion.wo
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
 Use cjugadorDataDictionary.dd
@@ -65,7 +64,7 @@ Object oZoomJugador is a cWebView
             Set psLabel to "Apellido"
         End_Object
 
-        Object ojugadorNacionalidad is a cWebForm
+        Object ojugadorNacionalidad is a cWebCombo
             Entry_Item jugador.Nacionalidad
             Set piColumnSpan to 6
             Set piColumnIndex to 0

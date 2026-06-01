@@ -101,6 +101,28 @@
 			</DDClasses>
 		</Table>
 		<Table>
+			<tableNumber>253</tableNumber>
+			<tableName>CodeType</tableName>
+			<DDClasses>
+				<DDClass>
+					<className>cCodeTypeDataDictionary</className>
+					<classFile>cCodeTypeDataDictionary.dd</classFile>
+					<preferred>true</preferred>
+				</DDClass>
+			</DDClasses>
+		</Table>
+		<Table>
+			<tableNumber>254</tableNumber>
+			<tableName>CodeMast</tableName>
+			<DDClasses>
+				<DDClass>
+					<className>cCodeMastDataDictionary</className>
+					<classFile>cCodeMastDataDictionary.dd</classFile>
+					<preferred>true</preferred>
+				</DDClass>
+			</DDClasses>
+		</Table>
+		<Table>
 			<tableNumber>263</tableNumber>
 			<tableName>WebAppSession</tableName>
 			<DDClasses>

@@ -1,8 +1,13 @@
 ﻿Use DataDict.pkg
+Use cCodeMastDataDictionary.dd
+Use cCodeTypeDataDictionary.dd
+
 Open jugador
 Open hijojugador
 Open jugadorposicion
 Open equipo
+Open CodeMast
+Open CodeType
 
 Class cjugadorDataDictionary is a DataDictionary
     
@@ -17,6 +22,13 @@ Class cjugadorDataDictionary is a DataDictionary
         Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Object oNacionalidadValidation is a CodeValidationTable
+            Set Type_Value to "PAIS"
+        End_Object
+
+        Set Field_Value_Table Field jugador.Nacionalidad to oNacionalidadValidation
+
     End_Procedure
 
 End_Class
