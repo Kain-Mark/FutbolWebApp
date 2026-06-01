@@ -141,6 +141,15 @@ Object oZoomEntrenador is a cWebView
             End_Procedure
         End_Object
 
+        Object oDespedirBtn is a cWebMenuItem
+            Set psCSSClass to "WebDeleteMenuItem"
+            Set psCaption to "Despedir"
+            Set peActionDisplay to adMenu
+            Procedure OnClick
+                Send Clear of oequipo_DD
+            End_Procedure
+        End_Object
+
     End_Object
 
     Procedure SetActionButtons
@@ -154,6 +163,7 @@ Object oZoomEntrenador is a cWebView
         WebSet pbRender of oSaveBtn to False
         WebSet pbRender of oCancelChangesBtn to False
         WebSet pbRender of oDeleteBtn to False
+        WebSet pbRender of oDespedirBtn to False
         If (NavigateData.bReadOnly) Begin
             WebSet pbRender of oEditBtn to True
         End
@@ -161,6 +171,7 @@ Object oZoomEntrenador is a cWebView
             WebSet pbRender of oSaveBtn to True
             WebSet pbRender of oCancelChangesBtn to True
             WebSet pbRender of oDeleteBtn to bHasRecord
+            WebSet pbRender of oDespedirBtn to True
         End
     End_Procedure
 
